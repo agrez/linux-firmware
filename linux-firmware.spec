@@ -22,7 +22,7 @@ Kernel-firmware includes firmware files required for some devices to
 operate.
 
 %prep
-%setup -q -n linux-firmware-%{version} -b2
+%setup -q -n linux-firmware-%{version} -b1
 tar -jxvf %{SOURCE2}
 
 
