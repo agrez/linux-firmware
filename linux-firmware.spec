@@ -2,7 +2,7 @@
 
 Name:		linux-firmware
 Version:	20100106
-Release:	3%{?dist}
+Release:	4%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -10,7 +10,7 @@ License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
 URL:		http://www.kernel.org/
 Source0:	ftp://ftp.kernel.org/pub/linux/kernel/people/dwmw2/firmware/%{name}-%{version}.tar.bz2
 Source1:	%{nvfw}.tar.bz2
-Source2:	radeon-rlc-firmware-1.tar.bz2
+Source2:	radeon-firmware-1.tar.bz2
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:	noarch
 Provides:	kernel-firmware = %{version} xorg-x11-drv-ati-firmware = 7.0
@@ -22,7 +22,8 @@ Kernel-firmware includes firmware files required for some devices to
 operate.
 
 %prep
-%setup -q -n linux-firmware-%{version} -b1 -b2
+%setup -q -n linux-firmware-%{version} -b2
+tar -jxvf %{SOURCE2}
 
 
 %build
@@ -50,10 +51,6 @@ mkdir -p $RPM_BUILD_ROOT/lib/firmware/nouveau
 cp -a * $RPM_BUILD_ROOT/lib/firmware/nouveau
 popd
 
-pushd ..
-cp R600_rlc.bin R700_rlc.bin $RPM_BUILD_ROOT/lib/firmware/radeon
-popd
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -64,6 +61,9 @@ rm -rf $RPM_BUILD_ROOT
 /lib/firmware/*
 
 %changelog
+* Fri Apr 09 2010 Dave Airlie <airlied@redhat.com> 20100106-4
+- Add further radeon firmwares
+
 * Wed Feb 10 2010 Dave Airlie <airlied@redhat.com> 20100106-3
 - add radeon RLC firmware - submitted upstream to dwmw2 already.
 
