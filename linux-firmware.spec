@@ -10,7 +10,7 @@ License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
 URL:		http://www.kernel.org/
 Source0:	ftp://ftp.kernel.org/pub/linux/kernel/people/dwmw2/firmware/%{name}-%{version}.tar.bz2
 Source1:	%{nvfw}.tar.bz2
-Source2:	radeon-firmware-1.tar.bz2
+Source2:	radeon-firmware-2.tar.bz2
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:	noarch
 Provides:	kernel-firmware = %{version} xorg-x11-drv-ati-firmware = 7.0
@@ -57,7 +57,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
-%doc WHENCE LICENCE.* ../LICENSE.radeon.firmware
+%doc WHENCE LICENCE.* LICENSE.*
 /lib/firmware/*
 
 %changelog
