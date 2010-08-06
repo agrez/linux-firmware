@@ -1,8 +1,8 @@
 %define nvfw nouveau-firmware-1
 
 Name:		linux-firmware
-Version:	20100106
-Release:	4%{?dist}
+Version:	20100806
+Release:	1%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -61,6 +61,9 @@ rm -rf $RPM_BUILD_ROOT
 /lib/firmware/*
 
 %changelog
+* Fri Aug 06 2010 David Woodhouse <dwmw2@infradead.org> 20100806-1
+- Merge more legacy firmware images from kernel source tree
+
 * Fri Apr 09 2010 Dave Airlie <airlied@redhat.com> 20100106-4
 - Add further radeon firmwares
 
