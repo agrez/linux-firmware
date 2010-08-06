@@ -2,7 +2,7 @@
 
 Name:		linux-firmware
 Version:	20100806
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -10,7 +10,6 @@ License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
 URL:		http://www.kernel.org/
 Source0:	ftp://ftp.kernel.org/pub/linux/kernel/people/dwmw2/firmware/%{name}-%{version}.tar.bz2
 Source1:	%{nvfw}.tar.bz2
-Source2:	radeon-firmware-2.tar.bz2
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:	noarch
 Provides:	kernel-firmware = %{version} xorg-x11-drv-ati-firmware = 7.0
@@ -23,7 +22,6 @@ operate.
 
 %prep
 %setup -q -n linux-firmware-%{version} -b1
-tar -jxvf %{SOURCE2}
 
 
 %build
@@ -61,8 +59,11 @@ rm -rf $RPM_BUILD_ROOT
 /lib/firmware/*
 
 %changelog
+* Fri Aug 06 2010 David Woodhouse <dwmw2@infradead.org> 20100806-2
+- Remove duplicate radeon firmwares; they're upstream now
+
 * Fri Aug 06 2010 David Woodhouse <dwmw2@infradead.org> 20100806-1
-- Merge more legacy firmware images from kernel source tree
+- Update to linux-firmware-20100806 (more legacy firmwares from kernel source)
 
 * Fri Apr 09 2010 Dave Airlie <airlied@redhat.com> 20100106-4
 - Add further radeon firmwares
