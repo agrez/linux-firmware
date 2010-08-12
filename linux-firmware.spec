@@ -2,7 +2,7 @@
 
 Name:		linux-firmware
 Version:	20100806
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -60,6 +60,9 @@ rm -rf $RPM_BUILD_ROOT
 /lib/firmware/*
 
 %changelog
+* Thu Aug 12 2010 Hicham HAOUARI <hicham.haouari@gmail.com> 20100806-3
+- Obsolete ueagle-atm4-firmware
+
 * Fri Aug 06 2010 David Woodhouse <dwmw2@infradead.org> 20100806-2
 - Remove duplicate radeon firmwares; they're upstream now
 
