@@ -2,7 +2,7 @@
 
 Name:		linux-firmware
 Version:	20100806
-Release:	3%{?dist}
+Release:	4%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -14,7 +14,7 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:	noarch
 Provides:	kernel-firmware = %{version} xorg-x11-drv-ati-firmware = 7.0
 Obsoletes:	kernel-firmware < %{version} xorg-x11-drv-ati-firmware < 6.13.0-0.22
-Obsoletes:	ueagle-atm4-firmware <= 1.0-4
+Obsoletes:	ueagle-atm4-firmware < 1.0-5
 Requires:	udev
 
 %description
@@ -60,6 +60,9 @@ rm -rf $RPM_BUILD_ROOT
 /lib/firmware/*
 
 %changelog
+* Thu Aug 12 2010 Hicham HAOUARI <hicham.haouari@gmail.com> 20100806-4
+- Really obsolete ueagle-atm4-firmware
+
 * Thu Aug 12 2010 Hicham HAOUARI <hicham.haouari@gmail.com> 20100806-3
 - Obsolete ueagle-atm4-firmware
 
