@@ -1,8 +1,8 @@
 %define nvfw nouveau-firmware-1
 
 Name:		linux-firmware
-Version:	20100806
-Release:	4%{?dist}
+Version:	20101221
+Release:	1%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -10,6 +10,7 @@ License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
 URL:		http://www.kernel.org/
 Source0:	ftp://ftp.kernel.org/pub/linux/kernel/people/dwmw2/firmware/%{name}-%{version}.tar.bz2
 Source1:	%{nvfw}.tar.bz2
+Source2:	radeon-ni-fw.tar.bz2
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:	noarch
 Provides:	kernel-firmware = %{version} xorg-x11-drv-ati-firmware = 7.0
@@ -24,6 +25,8 @@ operate.
 %prep
 %setup -q -n linux-firmware-%{version} -b1
 
+tar -jxvf %{SOURCE2}
+cd -
 
 %build
 # Remove firmware shipped in separate packages already
@@ -60,6 +63,9 @@ rm -rf $RPM_BUILD_ROOT
 /lib/firmware/*
 
 %changelog
+* Fri Jan 07 2011 Dave Airlie <airlied@redhat.com> 20101221-1
+- rebase to upstream release + add new radeon NI firmwares.
+
 * Thu Aug 12 2010 Hicham HAOUARI <hicham.haouari@gmail.com> 20100806-4
 - Really obsolete ueagle-atm4-firmware
 
