@@ -1,7 +1,7 @@
 %define nvfw nouveau-firmware-1
 
 Name:		linux-firmware
-Version:	20101221
+Version:	20110125
 Release:	1%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -63,6 +63,9 @@ rm -rf $RPM_BUILD_ROOT
 /lib/firmware/*
 
 %changelog
+* Tue Jan 25 2011 David Woodhouse <dwmw2@infradead.org> 20110125-1
+- Update to linux-firmware-20110125 (new bnx2 firmware)
+
 * Fri Jan 07 2011 Dave Airlie <airlied@redhat.com> 20101221-1
 - rebase to upstream release + add new radeon NI firmwares.
 
