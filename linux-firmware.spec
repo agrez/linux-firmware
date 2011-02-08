@@ -2,7 +2,7 @@
 
 Name:		linux-firmware
 Version:	20110125
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -63,6 +63,9 @@ rm -rf $RPM_BUILD_ROOT
 /lib/firmware/*
 
 %changelog
+* Tue Feb 08 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 20110125-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
+
 * Tue Jan 25 2011 David Woodhouse <dwmw2@infradead.org> 20110125-1
 - Update to linux-firmware-20110125 (new bnx2 firmware)
 
