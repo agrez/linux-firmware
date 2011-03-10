@@ -1,16 +1,13 @@
-%define nvfw nouveau-firmware-1
 
 Name:		linux-firmware
-Version:	20110125
-Release:	2%{?dist}
+Version:	20110304
+Release:	1%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
 URL:		http://www.kernel.org/
 Source0:	ftp://ftp.kernel.org/pub/linux/kernel/people/dwmw2/firmware/%{name}-%{version}.tar.bz2
-Source1:	%{nvfw}.tar.bz2
-Source2:	radeon-ni-fw.tar.bz2
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:	noarch
 Provides:	kernel-firmware = %{version} xorg-x11-drv-ati-firmware = 7.0
@@ -23,10 +20,7 @@ Kernel-firmware includes firmware files required for some devices to
 operate.
 
 %prep
-%setup -q -n linux-firmware-%{version} -b1
-
-tar -jxvf %{SOURCE2}
-cd -
+%setup -q -n linux-firmware-%{version} 
 
 %build
 # Remove firmware shipped in separate packages already
@@ -48,11 +42,6 @@ mkdir -p $RPM_BUILD_ROOT/lib/firmware
 cp -r * $RPM_BUILD_ROOT/lib/firmware
 rm $RPM_BUILD_ROOT/lib/firmware/{WHENCE,LICENCE.*}
 
-pushd ../%{nvfw}
-mkdir -p $RPM_BUILD_ROOT/lib/firmware/nouveau
-cp -a * $RPM_BUILD_ROOT/lib/firmware/nouveau
-popd
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -63,6 +52,9 @@ rm -rf $RPM_BUILD_ROOT
 /lib/firmware/*
 
 %changelog
+* Thu Mar 10 2011 Dave Airlie <airlied@redhat.com> 20110304-1
+- update to latest upstream for radeon ni/cayman, drop nouveau fw we don't use it anymore
+
 * Tue Feb 08 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 20110125-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
 
