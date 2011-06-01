@@ -1,6 +1,6 @@
 
 Name:		linux-firmware
-Version:	20110304
+Version:	20110601
 Release:	1%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -52,6 +52,9 @@ rm -rf $RPM_BUILD_ROOT
 /lib/firmware/*
 
 %changelog
+* Wed Jun 01 2011 Dave Airlie <airlied@redhat.com> 20110601-1
+- Latest firmware release with AMD llano support.
+
 * Thu Mar 10 2011 Dave Airlie <airlied@redhat.com> 20110304-1
 - update to latest upstream for radeon ni/cayman, drop nouveau fw we don't use it anymore
 
