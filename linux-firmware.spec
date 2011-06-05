@@ -1,7 +1,7 @@
 
 Name:		linux-firmware
 Version:	20110601
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -40,7 +40,7 @@ rm -f usbdux/*dux */*.asm
 rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT/lib/firmware
 cp -r * $RPM_BUILD_ROOT/lib/firmware
-rm $RPM_BUILD_ROOT/lib/firmware/{WHENCE,LICENCE.*}
+rm $RPM_BUILD_ROOT/lib/firmware/{WHENCE,LICENCE.*,LICENSE.*}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -52,6 +52,9 @@ rm -rf $RPM_BUILD_ROOT
 /lib/firmware/*
 
 %changelog
+* Sun Jun 05 2011 Peter Lemenkov <lemenkov@gmail.com> 20110601-2
+- Remove duplicated licensing files from /lib/firmware
+
 * Wed Jun 01 2011 Dave Airlie <airlied@redhat.com> 20110601-1
 - Latest firmware release with AMD llano support.
 
