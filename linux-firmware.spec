@@ -1,7 +1,7 @@
 
 Name:		linux-firmware
-Version:	20110601
-Release:	2%{?dist}
+Version:	20110731
+Release:	1%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -52,6 +52,9 @@ rm -rf $RPM_BUILD_ROOT
 /lib/firmware/*
 
 %changelog
+* Wed Aug 03 2011 David Woodhouse <dwmw2@infradead.org> 20110731-1
+- Latest firmware release with v1.3 ath9k firmware (#727702)
+
 * Sun Jun 05 2011 Peter Lemenkov <lemenkov@gmail.com> 20110601-2
 - Remove duplicated licensing files from /lib/firmware
 
