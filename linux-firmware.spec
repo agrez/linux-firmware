@@ -1,7 +1,7 @@
 
 Name:		linux-firmware
 Version:	20110731
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -13,6 +13,9 @@ BuildArch:	noarch
 Provides:	kernel-firmware = %{version} xorg-x11-drv-ati-firmware = 7.0
 Obsoletes:	kernel-firmware < %{version} xorg-x11-drv-ati-firmware < 6.13.0-0.22
 Obsoletes:	ueagle-atm4-firmware < 1.0-5
+# The netxen firmware gets independently updated, so we'll use it instead of 
+# whatever happens to be in the last checkout.
+Requires:	netxen-firmware
 Requires:	udev
 
 %description
@@ -32,6 +35,8 @@ rm -rf ess korg sb16 yamaha
 rm rt73.bin rt2561.bin rt2561s.bin rt2661.bin
 # And _some_ conexant firmware.
 rm v4l-cx23418-apu.fw v4l-cx23418-cpu.fw v4l-cx23418-dig.fw v4l-cx25840.fw
+# Netxen firmware
+rm phanfw.bin LICENCE.phanfw
 
 # Remove source files we don't need to install
 rm -f usbdux/*dux */*.asm
@@ -52,6 +57,9 @@ rm -rf $RPM_BUILD_ROOT
 /lib/firmware/*
 
 %changelog
+* Thu Aug 04 2011 Tom Callaway <spot@fedoraproject.org> 20110731-2
+- resolve conflict with netxen-firmware
+
 * Wed Aug 03 2011 David Woodhouse <dwmw2@infradead.org> 20110731-1
 - Latest firmware release with v1.3 ath9k firmware (#727702)
 
