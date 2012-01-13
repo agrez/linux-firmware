@@ -1,7 +1,7 @@
 
 Name:		linux-firmware
 Version:	20110731
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -57,6 +57,9 @@ rm -rf $RPM_BUILD_ROOT
 /lib/firmware/*
 
 %changelog
+* Fri Jan 13 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 20110731-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
+
 * Thu Aug 04 2011 Tom Callaway <spot@fedoraproject.org> 20110731-2
 - resolve conflict with netxen-firmware
 
