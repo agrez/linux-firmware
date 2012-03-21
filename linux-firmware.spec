@@ -34,7 +34,7 @@ if [ -z "$GIT_COMMITTER_NAME" ]; then
     git config user.name "Fedora X Ninjas"
 fi
 git add .
-git commit --author="builder@redhat.com" -m init .
+git commit -m init .
 git am %{PATCH1}
 
 %build
