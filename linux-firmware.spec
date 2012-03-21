@@ -2,7 +2,7 @@
 
 Name:		linux-firmware
 Version:	20120206
-Release:	0.1.git%{checkout}%{?dist}
+Release:	0.2.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -19,12 +19,15 @@ Obsoletes:	ueagle-atm4-firmware < 1.0-5
 Requires:	netxen-firmware
 Requires:	udev
 
+Patch1: 0001-radeon-firmware-for-Southern-Islands-GPU-and-Trinity.patch
+
 %description
 Kernel-firmware includes firmware files required for some devices to
 operate.
 
 %prep
 %setup -q -n linux-firmware-%{checkout}
+%patch1 -p1
 
 %build
 # Remove firmware shipped in separate packages already
@@ -58,7 +61,10 @@ rm -rf $RPM_BUILD_ROOT
 /lib/firmware/*
 
 %changelog
-* Tue Feb 07 2012 Josh Boyer <jwboyer@redhat.com>
+* Wed Mar 21 2012 Dave Airlie <airlied@redhat.com> 20120206-0.2.git06c8f81
+- add radeon southern islands/trinity firmware
+
+* Tue Feb 07 2012 Josh Boyer <jwboyer@redhat.com> 20120206-0.1.git06c8f81
 - Update to latest upstream git snapshot.  Fixes rhbz 786937
 
 * Fri Jan 13 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 20110731-3
