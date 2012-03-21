@@ -2,7 +2,7 @@
 
 Name:		linux-firmware
 Version:	20120206
-Release:	0.2.git%{checkout}%{?dist}
+Release:	0.3.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -18,6 +18,7 @@ Obsoletes:	ueagle-atm4-firmware < 1.0-5
 # whatever happens to be in the last checkout.
 Requires:	netxen-firmware
 Requires:	udev
+BuildRequires: git
 
 Patch1: 0001-radeon-firmware-for-Southern-Islands-GPU-and-Trinity.patch
 
@@ -27,7 +28,10 @@ operate.
 
 %prep
 %setup -q -n linux-firmware-%{checkout}
-%patch1 -p1
+git init .
+git add .
+git commit -m init .
+git am %{PATCH1}
 
 %build
 # Remove firmware shipped in separate packages already
@@ -61,6 +65,9 @@ rm -rf $RPM_BUILD_ROOT
 /lib/firmware/*
 
 %changelog
+* Wed Mar 21 2012 Dave Airlie <airlied@redhat.com> 20120206-0.3.git06c8f81
+- use git to apply the radeon firmware
+
 * Wed Mar 21 2012 Dave Airlie <airlied@redhat.com> 20120206-0.2.git06c8f81
 - add radeon southern islands/trinity firmware
 
