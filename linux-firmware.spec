@@ -28,9 +28,13 @@ operate.
 
 %prep
 %setup -q -n linux-firmware-%{checkout}
+if [ -z "$GIT_COMMITTER_NAME" ]; then
+    git config user.email "nobody@fedoraproject.org"
+    git config user.name "Fedora X Ninjas"
+fi
 git init .
 git add .
-git commit -m init .
+git commit --author="builder@redhat.com" -m init .
 git am %{PATCH1}
 
 %build
