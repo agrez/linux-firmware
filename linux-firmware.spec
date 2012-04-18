@@ -1,8 +1,8 @@
-%global checkout 06c8f81
+%global checkout 85fbcaa
 
 Name:		linux-firmware
-Version:	20120206
-Release:	0.3.git%{checkout}%{?dist}
+Version:	20120418
+Release:	0.1.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -69,6 +69,9 @@ rm -rf $RPM_BUILD_ROOT
 /lib/firmware/*
 
 %changelog
+* Wed Apr 18 2012 Josh Boyer <jwboyer@redhat.com> 20120418-0.1.git85fbcaa
+- Update to latest upstream.  Adds new rtl and ath firmware
+
 * Wed Mar 21 2012 Dave Airlie <airlied@redhat.com> 20120206-0.3.git06c8f81
 - use git to apply the radeon firmware
 
