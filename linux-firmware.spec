@@ -1,7 +1,7 @@
-%global checkout 85fbcaa
+%global checkout 375e954
 
 Name:		linux-firmware
-Version:	20120418
+Version:	20120510
 Release:	0.1.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -20,8 +20,6 @@ Requires:	netxen-firmware
 Requires:	udev
 BuildRequires: git
 
-Patch1: 0001-radeon-firmware-for-Southern-Islands-GPU-and-Trinity.patch
-
 %description
 Kernel-firmware includes firmware files required for some devices to
 operate.
@@ -35,7 +33,6 @@ if [ -z "$GIT_COMMITTER_NAME" ]; then
 fi
 git add .
 git commit -m init .
-git am %{PATCH1}
 
 %build
 # Remove firmware shipped in separate packages already
@@ -69,6 +66,9 @@ rm -rf $RPM_BUILD_ROOT
 /lib/firmware/*
 
 %changelog
+* Thu May 10 2012 Josh Boyer <jwboyer@redhat.com> 20120510-0.1.git375e954
+- Update to latest upstream.  Adds new bnx2x and radeon firmware
+
 * Wed Apr 18 2012 Josh Boyer <jwboyer@redhat.com> 20120418-0.1.git85fbcaa
 - Update to latest upstream.  Adds new rtl and ath firmware
 
