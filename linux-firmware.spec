@@ -15,6 +15,15 @@ BuildArch:	noarch
 Provides:	kernel-firmware = %{version} xorg-x11-drv-ati-firmware = 7.0
 Obsoletes:	kernel-firmware < %{version} xorg-x11-drv-ati-firmware < 6.13.0-0.22
 Obsoletes:	ueagle-atm4-firmware < 1.0-5
+# The netxen firmware gets independently updated, so we'll use it instead of 
+# whatever happens to be in the last checkout.
+Requires:	netxen-firmware
+Requires:	udev
+BuildRequires: git
+
+%description
+Kernel-firmware includes firmware files required for some devices to
+operate.
 
 %package -n iwl100-firmware
 Summary:	Firmware for Intel(R) Wireless WiFi Link 100 Series Adapters
@@ -172,16 +181,6 @@ This package contains the firmware required by the iwlagn driver
 for Linux.  Usage of the firmware is subject to the terms and conditions
 contained inside the provided LICENSE file. Please read it carefully.
 
-# The netxen firmware gets independently updated, so we'll use it instead of 
-# whatever happens to be in the last checkout.
-Requires:	netxen-firmware
-Requires:	udev
-BuildRequires: git
-
-%description
-Kernel-firmware includes firmware files required for some devices to
-operate.
-
 %prep
 %setup -q -n linux-firmware-%{checkout}
 git init .
@@ -297,6 +296,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %changelog
 * Tue Jun 05 2012 Josh Boyer <jwboyer@redhat.com> 20120510-0.3.git375e954
+- Fix location of BuildRequires so git is inclued in the buildroot
 - Create iwlXXXX-firmware subpackages (rhbz 828050)
 
 * Thu May 10 2012 Josh Boyer <jwboyer@redhat.com> 20120510-0.1.git375e954
