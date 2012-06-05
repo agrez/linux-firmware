@@ -2,7 +2,7 @@
 
 Name:		linux-firmware
 Version:	20120510
-Release:	0.1.git%{checkout}%{?dist}
+Release:	0.2.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -14,6 +14,28 @@ BuildArch:	noarch
 Provides:	kernel-firmware = %{version} xorg-x11-drv-ati-firmware = 7.0
 Obsoletes:	kernel-firmware < %{version} xorg-x11-drv-ati-firmware < 6.13.0-0.22
 Obsoletes:	ueagle-atm4-firmware < 1.0-5
+
+Provides:	iwl100-firmware = 39.31.5.1-4
+Obsoletes:	iwl100-firmware < iwl100-firmware-39.31.5.1-4
+Provides:	iwl1000-firmware = 1:39.31.5.1-3
+Obsoletes:	iwl1000-firmware < 1:39.31.5.1-3
+Provides:	iwl3945-firmware = 15.32.2.9-7
+Obsoletes:	iwl3945-firmware < 15.32.2.9-7
+Provides:	iwl4965-firmware = 228.61.2.24-5
+Obsoletes:	iwl4965-firmware < 228.61.2.24-5
+Provides:	iwl5000-firmware = 8.83.5.1_1-3
+Obsoletes:	iwl5000-firmware < 8.83.5.1_1-3
+Provides:	iwl5150-firmware = 8.24.2.2-4
+Obsoletes:	iwl5150-firmware < 8.24.2.2-4
+Provides:	iwl6000-firmware = 9.221.4.1-4
+Obsoletes:	iwl6000-firmware < 9.221.4.1-4
+Provides:	iwl6000g2a-firmware = 17.168.5.3-3
+Obsoletes:	iwl6000g2a-firmware < 17.168.5.3-3
+Provides:	iwl6000g2b-firmware = 17.168.5.2-3
+Obsoletes:	iwl6000g2b-firmware < 17.168.5.2-3
+Provides:	iwl6050-firmware = 41.28.5.1-5
+Obsoletes:	iwl6050-firmware < 41.28.5.1-5
+
 # The netxen firmware gets independently updated, so we'll use it instead of 
 # whatever happens to be in the last checkout.
 Requires:	netxen-firmware
@@ -38,7 +60,6 @@ git commit -m init .
 # Remove firmware shipped in separate packages already
 # Perhaps these should be built as subpackages of linux-firmware?
 rm ql2???_fw.bin LICENCE.qla2xxx
-rm iwlwifi-*.ucode LICENCE.iwlwifi_firmware
 rm -rf ess korg sb16 yamaha
 # We have _some_ ralink firmware in separate packages already.
 rm rt73.bin rt2561.bin rt2561s.bin rt2661.bin
@@ -66,6 +87,9 @@ rm -rf $RPM_BUILD_ROOT
 /lib/firmware/*
 
 %changelog
+* Tue Jun 05 2012 Josh Boyer <jwboyer@redhat.com> 20120510-0.2.git375e954
+- Provide and Obsolete all the iwlXXXX-firmware packages (rhbz 828050)
+
 * Thu May 10 2012 Josh Boyer <jwboyer@redhat.com> 20120510-0.1.git375e954
 - Update to latest upstream.  Adds new bnx2x and radeon firmware
 
