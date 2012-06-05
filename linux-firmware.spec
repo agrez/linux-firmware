@@ -1,8 +1,9 @@
 %global checkout 375e954
+%global iwlwifi_release 7
 
 Name:		linux-firmware
 Version:	20120510
-Release:	0.2.git%{checkout}%{?dist}
+Release:	0.3.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -15,26 +16,161 @@ Provides:	kernel-firmware = %{version} xorg-x11-drv-ati-firmware = 7.0
 Obsoletes:	kernel-firmware < %{version} xorg-x11-drv-ati-firmware < 6.13.0-0.22
 Obsoletes:	ueagle-atm4-firmware < 1.0-5
 
-Provides:	iwl100-firmware = 39.31.5.1-4
+%package -n iwl100-firmware
+Summary:	Firmware for Intel(R) Wireless WiFi Link 100 Series Adapters
+License:	Redistributable, no modification permitted
+Version:	39.31.5.1
+Release:	%{iwlwifi_release}%{?dist}
 Obsoletes:	iwl100-firmware < iwl100-firmware-39.31.5.1-4
-Provides:	iwl1000-firmware = 1:39.31.5.1-3
+%description -n iwl100-firmware
+This package contains the firmware required by the iwlagn driver
+for Linux to support the iwl100 hardware.  Usage of the firmware
+is subject to the terms and conditions contained inside the provided
+LICENSE file. Please read it carefully.
+
+%package -n iwl105-firmware
+Summary:	Firmware for Intel(R) Centrino Wireless-N 105 Series Adapters
+License:	Redistributable, no modification permitted
+Version:	18.168.6.1
+Release:	%{iwlwifi_release}%{?dist}
+%description -n iwl105-firmware
+This package contains the firmware required by the iwlagn driver
+for Linux to support the iwl105 hardware.  Usage of the firmware
+is subject to the terms and conditions contained inside the provided
+LICENSE file. Please read it carefully.
+
+%package -n iwl135-firmware
+Summary:	Firmware for Intel(R) Centrino Wireless-N 135 Series Adapters
+License:	Redistributable, no modification permitted
+Version:	18.168.6.1
+Release:	%{iwlwifi_release}%{?dist}
+%description -n iwl135-firmware
+This package contains the firmware required by the iwlagn driver
+for Linux to support the iwl135 hardware.  Usage of the firmware
+is subject to the terms and conditions contained inside the provided
+LICENSE file. Please read it carefully.
+
+%package -n iwl1000-firmware
+Summary:	Firmware for Intel® PRO/Wireless 1000 B/G/N network adaptors
+License:	Redistributable, no modification permitted
+Version:	39.31.5.1
+Release:	%{iwlwifi_release}%{?dist}
 Obsoletes:	iwl1000-firmware < 1:39.31.5.1-3
-Provides:	iwl3945-firmware = 15.32.2.9-7
+%description -n iwl1000-firmware
+This package contains the firmware required by the iwlagn driver
+for Linux to support the iwl1000 hardware.  Usage of the firmware
+is subject to the terms and conditions contained inside the provided
+LICENSE file. Please read it carefully.
+
+%package -n iwl2000-firmware
+Summary:	Firmware for Intel(R) Centrino Wireless-N 2000 Series Adapters
+License:	Redistributable, no modification permitted
+Version:	18.168.6.1
+Release:	%{iwlwifi_release}%{?dist}
+%description -n iwl2000-firmware
+This package contains the firmware required by the iwlagn driver
+for Linux to support the iwl2000 hardware.  Usage of the firmware
+is subject to the terms and conditions contained inside the provided
+LICENSE file. Please read it carefully.
+
+%package -n iwl2030-firmware
+Summary:	Firmware for Intel(R) Centrino Wireless-N 2030 Series Adapters
+License:	Redistributable, no modification permitted
+Version:	18.168.6.1
+Release:	%{iwlwifi_release}%{?dist}
+%description -n iwl2030-firmware
+This package contains the firmware required by the iwlagn driver
+for Linux to support the iwl2030 hardware.  Usage of the firmware
+is subject to the terms and conditions contained inside the provided
+LICENSE file. Please read it carefully.
+
+%package -n iwl3945-firmware
+Summary:	Firmware for Intel® PRO/Wireless 3945 A/B/G network adaptors
+License:	Redistributable, no modification permitted
+Version:	15.32.2.9
+Release:	%{iwlwifi_release}%{?dist}
 Obsoletes:	iwl3945-firmware < 15.32.2.9-7
-Provides:	iwl4965-firmware = 228.61.2.24-5
+%description -n iwl3945-firmware
+This package contains the firmware required by the iwl3945 driver
+for Linux.  Usage of the firmware is subject to the terms and conditions
+contained inside the provided LICENSE file. Please read it carefully.
+
+%package -n iwl4965-firmware
+Summary:	Firmware for Intel® PRO/Wireless 4965 A/G/N network adaptors
+License:	Redistributable, no modification permitted
+Version:	228.61.2.24
+Release:	%{iwlwifi_release}%{?dist}
 Obsoletes:	iwl4965-firmware < 228.61.2.24-5
-Provides:	iwl5000-firmware = 8.83.5.1_1-3
+%description -n iwl4965-firmware
+This package contains the firmware required by the iwl4965 driver
+for Linux.  Usage of the firmware is subject to the terms and conditions
+contained inside the provided LICENSE file. Please read it carefully.
+
+%package -n iwl5000-firmware
+Summary:	Firmware for Intel® PRO/Wireless 5000 A/G/N network adaptors
+License:	Redistributable, no modification permitted
+Version:	8.83.5.1_1
+Release:	%{iwlwifi_release}%{?dist}
 Obsoletes:	iwl5000-firmware < 8.83.5.1_1-3
-Provides:	iwl5150-firmware = 8.24.2.2-4
+%description -n iwl5000-firmware
+This package contains the firmware required by the iwl5000 driver
+for Linux.  Usage of the firmware is subject to the terms and conditions
+contained inside the provided LICENSE file. Please read it carefully.
+
+%package -n iwl5150-firmware
+Summary:	Firmware for Intel® PRO/Wireless 5150 A/G/N network adaptors
+License:	Redistributable, no modification permitted
+Version:	8.24.2.2
+Release:	%{iwlwifi_release}%{?dist}
 Obsoletes:	iwl5150-firmware < 8.24.2.2-4
-Provides:	iwl6000-firmware = 9.221.4.1-4
+%description -n iwl5150-firmware
+This package contains the firmware required by the iwl5150 driver
+for Linux.  Usage of the firmware is subject to the terms and conditions
+contained inside the provided LICENSE file. Please read it carefully.
+
+%package -n iwl6000-firmware
+Summary:	Firmware for Intel(R) Wireless WiFi Link 6000 AGN Adapter
+License:	Redistributable, no modification permitted
+Version:	9.221.4.1
+Release:	%{iwlwifi_release}%{?dist}
 Obsoletes:	iwl6000-firmware < 9.221.4.1-4
-Provides:	iwl6000g2a-firmware = 17.168.5.3-3
+%description -n iwl6000-firmware
+This package contains the firmware required by the iwlagn driver
+for Linux.  Usage of the firmware is subject to the terms and conditions
+contained inside the provided LICENSE file. Please read it carefully.
+
+%package -n iwl6000g2a-firmware
+Summary:	Firmware for Intel(R) Wireless WiFi Link 6005 Series Adapters
+License:	Redistributable, no modification permitted
+Version:	17.168.5.3
+Release:	%{iwlwifi_release}%{?dist}
 Obsoletes:	iwl6000g2a-firmware < 17.168.5.3-3
-Provides:	iwl6000g2b-firmware = 17.168.5.2-3
+%description -n iwl6000g2a-firmware
+This package contains the firmware required by the iwlagn driver
+for Linux.  Usage of the firmware is subject to the terms and conditions
+contained inside the provided LICENSE file. Please read it carefully.
+
+%package -n iwl6000g2b-firmware
+Summary:	Firmware for Intel(R) Wireless WiFi Link 6030 Series Adapters
+License:	Redistributable, no modification permitted
+Version:	17.168.5.2
+Release:	%{iwlwifi_release}%{?dist}
 Obsoletes:	iwl6000g2b-firmware < 17.168.5.2-3
-Provides:	iwl6050-firmware = 41.28.5.1-5
+%description -n iwl6000g2b-firmware
+This package contains the firmware required by the iwlagn driver
+for Linux.  Usage of the firmware is subject to the terms and conditions
+contained inside the provided LICENSE file. Please read it carefully.
+
+%package -n iwl6050-firmware
+Summary:	Firmware for Intel(R) Wireless WiFi Link 6050 Series Adapters
+License:	Redistributable, no modification permitted
+Version:	41.28.5.1
+Release:	%{iwlwifi_release}%{?dist}
 Obsoletes:	iwl6050-firmware < 41.28.5.1-5
+%description -n iwl6050-firmware
+This package contains the firmware required by the iwlagn driver
+for Linux.  Usage of the firmware is subject to the terms and conditions
+contained inside the provided LICENSE file. Please read it carefully.
 
 # The netxen firmware gets independently updated, so we'll use it instead of 
 # whatever happens to be in the last checkout.
@@ -76,19 +212,92 @@ rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT/lib/firmware
 cp -r * $RPM_BUILD_ROOT/lib/firmware
 rm $RPM_BUILD_ROOT/lib/firmware/{WHENCE,LICENCE.*,LICENSE.*}
+FILEDIR=`pwd`
+pushd $RPM_BUILD_ROOT/lib/firmware
+find . \! -type d \! -name iwlwifi\* > $FILEDIR/linux-firmware.files.tmp
+popd
+sed -e 's/\./\/lib\/firmware\//' linux-firmware.files.tmp > linux-firmware.files
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%files -n iwl100-firmware
+%defattr(-,root,root,-)
+%doc WHENCE LICENCE.iwlwifi_firmware
+/lib/firmware/iwlwifi-100-5.ucode
 
-%files
+%files -n iwl105-firmware
+%defattr(-,root,root,-)
+%doc WHENCE LICENCE.iwlwifi_firmware
+/lib/firmware/iwlwifi-105-*.ucode
+
+%files -n iwl135-firmware
+%defattr(-,root,root,-)
+%doc WHENCE LICENCE.iwlwifi_firmware
+/lib/firmware/iwlwifi-135-*.ucode
+
+%files -n iwl1000-firmware
+%defattr(-,root,root,-)
+%doc WHENCE LICENCE.iwlwifi_firmware
+/lib/firmware/iwlwifi-1000-*.ucode
+
+%files -n iwl2000-firmware
+%defattr(-,root,root,-)
+%doc WHENCE LICENCE.iwlwifi_firmware
+/lib/firmware/iwlwifi-2000-*.ucode
+
+%files -n iwl2030-firmware
+%defattr(-,root,root,-)
+%doc WHENCE LICENCE.iwlwifi_firmware
+/lib/firmware/iwlwifi-2030-*.ucode
+
+%files -n iwl3945-firmware
+%defattr(-,root,root,-)
+%doc WHENCE LICENCE.iwlwifi_firmware
+/lib/firmware/iwlwifi-3945-*.ucode
+
+%files -n iwl4965-firmware
+%defattr(-,root,root,-)
+%doc WHENCE LICENCE.iwlwifi_firmware
+/lib/firmware/iwlwifi-4965-*.ucode
+
+%files -n iwl5000-firmware
+%defattr(-,root,root,-)
+%doc WHENCE LICENCE.iwlwifi_firmware
+/lib/firmware/iwlwifi-5000-*.ucode
+
+%files -n iwl5150-firmware
+%defattr(-,root,root,-)
+%doc WHENCE LICENCE.iwlwifi_firmware
+/lib/firmware/iwlwifi-5150-*.ucode
+
+%files -n iwl6000-firmware
+%defattr(-,root,root,-)
+%doc WHENCE LICENCE.iwlwifi_firmware
+/lib/firmware/iwlwifi-6000-*.ucode
+
+%files -n iwl6000g2a-firmware
+%defattr(-,root,root,-)
+%doc WHENCE LICENCE.iwlwifi_firmware
+/lib/firmware/iwlwifi-6000g2a-*.ucode
+
+%files -n iwl6000g2b-firmware
+%defattr(-,root,root,-)
+%doc WHENCE LICENCE.iwlwifi_firmware
+/lib/firmware/iwlwifi-6000g2b-*.ucode
+
+%files -n iwl6050-firmware
+%defattr(-,root,root,-)
+%doc WHENCE LICENCE.iwlwifi_firmware
+/lib/firmware/iwlwifi-6050-*.ucode
+
+%files -f linux-firmware.files
 %defattr(-,root,root,-)
 %doc WHENCE LICENCE.* LICENSE.*
-/lib/firmware/*
 
 %changelog
-* Tue Jun 05 2012 Josh Boyer <jwboyer@redhat.com> 20120510-0.2.git375e954
-- Provide and Obsolete all the iwlXXXX-firmware packages (rhbz 828050)
+* Tue Jun 05 2012 Josh Boyer <jwboyer@redhat.com> 20120510-0.3.git375e954
+- Create iwlXXXX-firmware subpackages (rhbz 828050)
 
 * Thu May 10 2012 Josh Boyer <jwboyer@redhat.com> 20120510-0.1.git375e954
 - Update to latest upstream.  Adds new bnx2x and radeon firmware
