@@ -1,5 +1,5 @@
 %global checkout 375e954
-%global iwlwifi_release 7
+%global iwlwifi_release 8
 
 Name:		linux-firmware
 Version:	20120510
