@@ -3,7 +3,7 @@
 
 Name:		linux-firmware
 Version:	20120510
-Release:	0.3.git%{checkout}%{?dist}
+Release:	0.4.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -18,7 +18,6 @@ Obsoletes:	ueagle-atm4-firmware < 1.0-5
 # The netxen firmware gets independently updated, so we'll use it instead of 
 # whatever happens to be in the last checkout.
 Requires:	netxen-firmware
-Requires:	udev
 BuildRequires: git
 
 %description
@@ -295,6 +294,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Thu Jun 07 2012 Josh Boyer <jwboyer@redhat.com> 20120510-0.4.git375e954
+- Drop udev requires.  Systemd now provides udev
+
 * Tue Jun 05 2012 Josh Boyer <jwboyer@redhat.com> 20120510-0.3.git375e954
 - Fix location of BuildRequires so git is inclued in the buildroot
 - Create iwlXXXX-firmware subpackages (rhbz 828050)
