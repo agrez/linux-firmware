@@ -1,9 +1,9 @@
-%global checkout 375e954
-%global iwlwifi_release 9
+%global checkout f1f86bb
+%global iwlwifi_release 10
 
 Name:		linux-firmware
-Version:	20120510
-Release:	0.5.git%{checkout}%{?dist}
+Version:	20120717
+Release:	0.1.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -294,6 +294,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Tue Jul 17 2012 Josh Boyer <jwboyer@redhat.com> 20120717-0.1.gitf1f86bb
+- Update to latest upstream.  Adds updated realtek firmware
+
 * Thu Jun 07 2012 Josh Boyer <jwboyer@redhat.com> 20120510-0.5.git375e954
 - Bump release to get around koji
 
