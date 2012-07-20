@@ -1,8 +1,8 @@
-%global checkout f1f86bb
-%global iwlwifi_release 10
+%global checkout 7560108
+%global iwlwifi_release 11
 
 Name:		linux-firmware
-Version:	20120717
+Version:	20120720
 Release:	0.1.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -294,6 +294,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Fri Jul 20 2012 Josh Boyer <jwboyer@redhat.com> 20120720-0.1.git7560108
+- Update to latest upstream.  Adds more realtek firmware and bcm4334
+
 * Tue Jul 17 2012 Josh Boyer <jwboyer@redhat.com> 20120717-0.1.gitf1f86bb
 - Update to latest upstream.  Adds updated realtek firmware
 
