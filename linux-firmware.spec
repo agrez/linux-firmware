@@ -1,9 +1,9 @@
 %global checkout 7560108
-%global iwlwifi_release 11
+%global iwlwifi_release 12
 
 Name:		linux-firmware
 Version:	20120720
-Release:	0.1.git%{checkout}%{?dist}
+Release:	0.2.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -62,6 +62,7 @@ LICENSE file. Please read it carefully.
 Summary:	Firmware for Intel® PRO/Wireless 1000 B/G/N network adaptors
 License:	Redistributable, no modification permitted
 Version:	39.31.5.1
+Epoch:		1
 Release:	%{iwlwifi_release}%{?dist}
 Obsoletes:	iwl1000-firmware < 1:39.31.5.1-3
 %description -n iwl1000-firmware
@@ -294,6 +295,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Fri Sep 07 2012 Josh Boyer <jwboyer@redhat.com> 20120720-0.2.git7560108
+- Add epoch to iwl1000 subpackage to preserve upgrade patch (rhbz 855426)
+
 * Fri Jul 20 2012 Josh Boyer <jwboyer@redhat.com> 20120720-0.1.git7560108
 - Update to latest upstream.  Adds more realtek firmware and bcm4334
 
