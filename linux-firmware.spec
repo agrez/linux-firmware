@@ -1,9 +1,9 @@
 %global checkout 7560108
-%global iwlwifi_release 12
+%global iwlwifi_release 13
 
 Name:		linux-firmware
 Version:	20120720
-Release:	0.2.git%{checkout}%{?dist}
+Release:	0.3.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -181,6 +181,33 @@ This package contains the firmware required by the iwlagn driver
 for Linux.  Usage of the firmware is subject to the terms and conditions
 contained inside the provided LICENSE file. Please read it carefully.
 
+%package -n libertas-usb8388-firmware
+Summary:	Firmware for Marvell Libertas USB 8388 Network Adapter
+License:	Redistributable, no modification permitted
+Obsoletes:	libertas-usb8388-firmware < 5.110.22.p23-8
+%description -n libertas-usb8388-firmware
+Firmware for Marvell Libertas USB 8388 Network Adapter
+
+%package -n libertas-usb8388-olpc-firmware
+Summary:	OLPC firmware for Marvell Libertas USB 8388 Network Adapter
+License:	Redistributable, no modification permitted
+%description -n libertas-usb8388-olpc-firmware
+Firmware for Marvell Libertas USB 8388 Network Adapter with OLPC mesh network
+support.
+
+%package -n libertas-sd8686-firmware
+Summary:	Firmware for Marvell Libertas SD 8686 Network Adapter
+License:	Redistributable, no modification permitted
+Obsoletes:	libertas-sd8686-firmware < 9.70.20.p0-4
+%description -n libertas-sd8686-firmware
+Firmware for Marvell Libertas SD 8686 Network Adapter
+
+%package -n libertas-sd8787-firmware
+Summary:	Firmware for Marvell Libertas SD 8787 Network Adapter
+License:	Redistributable, no modification permitted
+%description -n libertas-sd8787-firmware
+Firmware for Marvell Libertas SD 8787 Network Adapter
+
 %prep
 %setup -q -n linux-firmware-%{checkout}
 git init .
@@ -206,16 +233,29 @@ rm phanfw.bin LICENCE.phanfw
 # Remove source files we don't need to install
 rm -f usbdux/*dux */*.asm
 
+# No need to install old firmware versions where we also provide newer versions
+# which are preferred and support the same (or more) hardware
+rm -f libertas/sd8686_v8*
+rm -f libertas/usb8388_v5.bin
+
 %install
 rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT/lib/firmware
 cp -r * $RPM_BUILD_ROOT/lib/firmware
 rm $RPM_BUILD_ROOT/lib/firmware/{WHENCE,LICENCE.*,LICENSE.*}
+
+# Create file list but exclude firmwares that we place in subpackages
 FILEDIR=`pwd`
 pushd $RPM_BUILD_ROOT/lib/firmware
-find . \! -type d \! -name iwlwifi\* > $FILEDIR/linux-firmware.files.tmp
+find . \! -type d > $FILEDIR/linux-firmware.files
 popd
-sed -e 's/\./\/lib\/firmware\//' linux-firmware.files.tmp > linux-firmware.files
+sed -i -e 's:^./::' linux-firmware.files
+sed -i -e '/^iwlwifi/d' \
+	-i -e '/^libertas\/sd8686/d' \
+	-i -e '/^libertas\/usb8388/d' \
+	-i -e '/^mrvl\/sd8787/d' \
+	linux-firmware.files
+sed -i -e 's/^/\/lib\/firmware\//' linux-firmware.files
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -290,11 +330,34 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.iwlwifi_firmware
 /lib/firmware/iwlwifi-6050-*.ucode
 
+%files -n libertas-usb8388-firmware
+%defattr(-,root,root,-)
+%doc WHENCE LICENCE.Marvell
+/lib/firmware/libertas/usb8388_v9.bin
+
+%files -n libertas-usb8388-olpc-firmware
+%defattr(-,root,root,-)
+%doc WHENCE LICENCE.Marvell
+/lib/firmware/libertas/usb8388_olpc.bin
+
+%files -n libertas-sd8686-firmware
+%defattr(-,root,root,-)
+%doc WHENCE LICENCE.Marvell
+/lib/firmware/libertas/sd8686*
+
+%files -n libertas-sd8787-firmware
+%defattr(-,root,root,-)
+%doc WHENCE LICENCE.Marvell
+/lib/firmware/mrvl/sd8787*
+
 %files -f linux-firmware.files
 %defattr(-,root,root,-)
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Tue Sep 18 2012 Josh Boyer <jwboyer@redhat.com>
+- Add patch to create libertas subpackages from Daniel Drake (rhbz 853198)
+
 * Fri Sep 07 2012 Josh Boyer <jwboyer@redhat.com> 20120720-0.2.git7560108
 - Add epoch to iwl1000 subpackage to preserve upgrade patch (rhbz 855426)
 
