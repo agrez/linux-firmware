@@ -1,9 +1,9 @@
-%global checkout 7560108
-%global iwlwifi_release 13
+%global checkout 236367d
+%global iwlwifi_release 14
 
 Name:		linux-firmware
-Version:	20120720
-Release:	0.3.git%{checkout}%{?dist}
+Version:	20120925
+Release:	0.1.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -355,6 +355,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Tue Sep 25 2012 Josh Boyer <jwboyer@redhat.com>
+- Update to latest upstream.  Adds marvell wifi updates (rhbz 858388)
+
 * Tue Sep 18 2012 Josh Boyer <jwboyer@redhat.com>
 - Add patch to create libertas subpackages from Daniel Drake (rhbz 853198)
 
