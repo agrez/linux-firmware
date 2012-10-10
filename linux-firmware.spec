@@ -1,9 +1,9 @@
 %global checkout 236367d
-%global iwlwifi_release 14
+%global iwlwifi_release 15
 
 Name:		linux-firmware
 Version:	20120925
-Release:	0.1.git%{checkout}%{?dist}
+Release:	0.2.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -15,9 +15,11 @@ BuildArch:	noarch
 Provides:	kernel-firmware = %{version} xorg-x11-drv-ati-firmware = 7.0
 Obsoletes:	kernel-firmware < %{version} xorg-x11-drv-ati-firmware < 6.13.0-0.22
 Obsoletes:	ueagle-atm4-firmware < 1.0-5
-# The netxen firmware gets independently updated, so we'll use it instead of 
-# whatever happens to be in the last checkout.
-Requires:	netxen-firmware
+Obsoletes:	netxen-firmware < 4.0.534-7
+Obsoletes:	ql2100-firmware < 1.19.38-7
+Obsoletes:	ql2200-firmware < 2.02.08-7
+Obsoletes:	ql23xx-firmware < 3.03.28-5
+
 BuildRequires: git
 
 %description
@@ -221,14 +223,12 @@ git commit -m init .
 %build
 # Remove firmware shipped in separate packages already
 # Perhaps these should be built as subpackages of linux-firmware?
-rm ql2???_fw.bin LICENCE.qla2xxx
+rm ql2[45]??_fw.bin
 rm -rf ess korg sb16 yamaha
 # We have _some_ ralink firmware in separate packages already.
 rm rt73.bin rt2561.bin rt2561s.bin rt2661.bin
 # And _some_ conexant firmware.
 rm v4l-cx23418-apu.fw v4l-cx23418-cpu.fw v4l-cx23418-dig.fw v4l-cx25840.fw
-# Netxen firmware
-rm phanfw.bin LICENCE.phanfw
 
 # Remove source files we don't need to install
 rm -f usbdux/*dux */*.asm
@@ -355,6 +355,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Wed Oct 10 2012 Josh Boyer <jwboyer@redhat.com>
+- Consolidate netxen-firmware and ql2[123]xx-firmware packages (rhbz 864959)
+
 * Tue Sep 25 2012 Josh Boyer <jwboyer@redhat.com>
 - Update to latest upstream.  Adds marvell wifi updates (rhbz 858388)
 
