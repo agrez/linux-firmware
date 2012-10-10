@@ -1,9 +1,9 @@
 %global checkout 236367d
-%global iwlwifi_release 15
+%global iwlwifi_release 16
 
 Name:		linux-firmware
 Version:	20120925
-Release:	0.2.git%{checkout}%{?dist}
+Release:	0.3.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -19,6 +19,8 @@ Obsoletes:	netxen-firmware < 4.0.534-7
 Obsoletes:	ql2100-firmware < 1.19.38-7
 Obsoletes:	ql2200-firmware < 2.02.08-7
 Obsoletes:	ql23xx-firmware < 3.03.28-5
+Obsoletes:	rt61pci-firmware < 1.2-11
+Obsoletes:	rt73usb-firmware < 1.8-11
 
 BuildRequires: git
 
@@ -225,8 +227,6 @@ git commit -m init .
 # Perhaps these should be built as subpackages of linux-firmware?
 rm ql2[45]??_fw.bin
 rm -rf ess korg sb16 yamaha
-# We have _some_ ralink firmware in separate packages already.
-rm rt73.bin rt2561.bin rt2561s.bin rt2661.bin
 # And _some_ conexant firmware.
 rm v4l-cx23418-apu.fw v4l-cx23418-cpu.fw v4l-cx23418-dig.fw v4l-cx25840.fw
 
@@ -356,6 +356,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %changelog
 * Wed Oct 10 2012 Josh Boyer <jwboyer@redhat.com>
+- Consolidate rt61pci-firmware and rt73usb-firmware packages (rhbz 864959)
 - Consolidate netxen-firmware and ql2[123]xx-firmware packages (rhbz 864959)
 
 * Tue Sep 25 2012 Josh Boyer <jwboyer@redhat.com>
