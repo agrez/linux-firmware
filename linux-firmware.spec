@@ -249,14 +249,16 @@ rm $RPM_BUILD_ROOT/lib/firmware/{WHENCE,LICENCE.*,LICENSE.*}
 FILEDIR=`pwd`
 pushd $RPM_BUILD_ROOT/lib/firmware
 find . \! -type d > $FILEDIR/linux-firmware.files
+find . -type d | sed -e '/^.$/d' > $FILEDIR/linux-firmware.dirs
 popd
-sed -i -e 's:^./::' linux-firmware.files
+sed -i -e 's:^./::' linux-firmware.{files,dirs}
 sed -i -e '/^iwlwifi/d' \
 	-i -e '/^libertas\/sd8686/d' \
 	-i -e '/^libertas\/usb8388/d' \
 	-i -e '/^mrvl\/sd8787/d' \
 	linux-firmware.files
-sed -i -e 's/^/\/lib\/firmware\//' linux-firmware.files
+sed -i -e 's/^/\/lib\/firmware\//' linux-firmware.{files,dirs}
+sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -334,21 +336,25 @@ rm -rf $RPM_BUILD_ROOT
 %files -n libertas-usb8388-firmware
 %defattr(-,root,root,-)
 %doc WHENCE LICENCE.Marvell
+%dir /lib/firmware/libertas
 /lib/firmware/libertas/usb8388_v9.bin
 
 %files -n libertas-usb8388-olpc-firmware
 %defattr(-,root,root,-)
 %doc WHENCE LICENCE.Marvell
+%dir /lib/firmware/libertas
 /lib/firmware/libertas/usb8388_olpc.bin
 
 %files -n libertas-sd8686-firmware
 %defattr(-,root,root,-)
 %doc WHENCE LICENCE.Marvell
+%dir /lib/firmware/libertas
 /lib/firmware/libertas/sd8686*
 
 %files -n libertas-sd8787-firmware
 %defattr(-,root,root,-)
 %doc WHENCE LICENCE.Marvell
+%dir /lib/firmware/mrvl
 /lib/firmware/mrvl/sd8787*
 
 %files -f linux-firmware.files
@@ -356,6 +362,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Wed Jan 23 2013 Ville Skyttä <ville.skytta@iki.fi> - 20121218-0.2.gitbda53ca
+- Own subdirs created in /lib/firmware (rhbz 902005)
+
 * Wed Jan 23 2013 Josh Boyer <jwboyer@redhat.com>
 - Correctly obsolete the libertas-usb8388-firmware packages (rhbz 902265)
 
