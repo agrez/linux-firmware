@@ -1,9 +1,9 @@
 %global checkout bda53ca
-%global iwlwifi_release 17
+%global iwlwifi_release 18
 
 Name:		linux-firmware
 Version:	20121218
-Release:	0.1.git%{checkout}%{?dist}
+Release:	0.2.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -188,7 +188,8 @@ contained inside the provided LICENSE file. Please read it carefully.
 %package -n libertas-usb8388-firmware
 Summary:	Firmware for Marvell Libertas USB 8388 Network Adapter
 License:	Redistributable, no modification permitted
-Obsoletes:	libertas-usb8388-firmware < 5.110.22.p23-8
+Epoch:		2 
+Obsoletes:	libertas-usb8388-firmware < 2:5.110.22.p23-8
 %description -n libertas-usb8388-firmware
 Firmware for Marvell Libertas USB 8388 Network Adapter
 
@@ -355,6 +356,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Wed Jan 23 2013 Josh Boyer <jwboyer@redhat.com>
+- Correctly obsolete the libertas-usb8388-firmware packages (rhbz 902265)
+
 * Tue Dec 18 2012 Josh Boyer <jwboyer@redhat.com>
 - Update to latest upstream.  Adds brcm firmware updates
 
