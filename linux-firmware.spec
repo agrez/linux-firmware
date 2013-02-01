@@ -1,9 +1,9 @@
-%global checkout bda53ca
-%global iwlwifi_release 18
+%global checkout 65a5163
+%global iwlwifi_release 19
 
 Name:		linux-firmware
-Version:	20121218
-Release:	0.2.git%{checkout}%{?dist}
+Version:	20130201
+Release:	0.1.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -233,6 +233,7 @@ rm v4l-cx23418-apu.fw v4l-cx23418-cpu.fw v4l-cx23418-dig.fw v4l-cx25840.fw
 
 # Remove source files we don't need to install
 rm -f usbdux/*dux */*.asm
+rm -rf carl9170fw
 
 # No need to install old firmware versions where we also provide newer versions
 # which are preferred and support the same (or more) hardware
@@ -362,6 +363,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Fri Feb 01 2013 Josh Boyer <jwboyer@redhat.com - 
+- Update to latest upstream release
+- Provide firmware for carl9170 (rhbz 866051)
+
 * Wed Jan 23 2013 Ville Skyttä <ville.skytta@iki.fi> - 20121218-0.2.gitbda53ca
 - Own subdirs created in /lib/firmware (rhbz 902005)
 
