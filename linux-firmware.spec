@@ -1,9 +1,9 @@
 %global checkout 65a5163
-%global iwlwifi_release 19
+%global iwlwifi_release 20
 
 Name:		linux-firmware
 Version:	20130201
-Release:	0.2.git%{checkout}%{?dist}
+Release:	0.3.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -364,7 +364,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
-* Fri Feb 04 2013 Josh Boyer <jwboyer@redhat.com> - 20130201-0.2.git65a5163
+* Fri Feb 04 2013 Josh Boyer <jwboyer@redhat.com> - 20130201-0.3.git65a5163
 - Obsolete ql2[45]00-firmware packages (rhbz 906898)
  
 * Fri Feb 01 2013 Josh Boyer <jwboyer@redhat.com> 
