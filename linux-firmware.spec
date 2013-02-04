@@ -3,7 +3,7 @@
 
 Name:		linux-firmware
 Version:	20130201
-Release:	0.1.git%{checkout}%{?dist}
+Release:	0.2.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -19,6 +19,8 @@ Obsoletes:	netxen-firmware < 4.0.534-7
 Obsoletes:	ql2100-firmware < 1.19.38-7
 Obsoletes:	ql2200-firmware < 2.02.08-7
 Obsoletes:	ql23xx-firmware < 3.03.28-5
+Obsoletes:	ql2400-firmware < 5.08.00-2
+Obsoletes:	ql2500-firmware < 5.08.00-2
 Obsoletes:	rt61pci-firmware < 1.2-11
 Obsoletes:	rt73usb-firmware < 1.8-11
 
@@ -226,7 +228,6 @@ git commit -m init .
 %build
 # Remove firmware shipped in separate packages already
 # Perhaps these should be built as subpackages of linux-firmware?
-rm ql2[45]??_fw.bin
 rm -rf ess korg sb16 yamaha
 # And _some_ conexant firmware.
 rm v4l-cx23418-apu.fw v4l-cx23418-cpu.fw v4l-cx23418-dig.fw v4l-cx25840.fw
@@ -363,7 +364,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
-* Fri Feb 01 2013 Josh Boyer <jwboyer@redhat.com - 
+* Fri Feb 04 2013 Josh Boyer <jwboyer@redhat.com> - 20130201-0.2.git65a5163
+- Obsolete ql2[45]00-firmware packages (rhbz 906898)
+ 
+* Fri Feb 01 2013 Josh Boyer <jwboyer@redhat.com> 
 - Update to latest upstream release
 - Provide firmware for carl9170 (rhbz 866051)
 
