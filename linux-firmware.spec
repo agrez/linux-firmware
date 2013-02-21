@@ -1,9 +1,9 @@
 %global checkout 65a5163
-%global iwlwifi_release 20
+%global iwlwifi_release 21
 
 Name:		linux-firmware
 Version:	20130201
-Release:	0.3.git%{checkout}%{?dist}
+Release:	0.4.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -15,7 +15,7 @@ BuildArch:	noarch
 Provides:	kernel-firmware = %{version} xorg-x11-drv-ati-firmware = 7.0
 Obsoletes:	kernel-firmware < %{version} xorg-x11-drv-ati-firmware < 6.13.0-0.22
 Obsoletes:	ueagle-atm4-firmware < 1.0-5
-Obsoletes:	netxen-firmware < 4.0.534-7
+Obsoletes:	netxen-firmware < 4.0.534-9
 Obsoletes:	ql2100-firmware < 1.19.38-7
 Obsoletes:	ql2200-firmware < 2.02.08-7
 Obsoletes:	ql23xx-firmware < 3.03.28-5
@@ -364,6 +364,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Thu Feb 21 2013 Josh Boyer <jwboyer@redhat.com> - 20130201-0.4.git65a5163
+- Obsolete netxen-firmware.  Again.  (rhbz 913680)
+
 * Fri Feb 04 2013 Josh Boyer <jwboyer@redhat.com> - 20130201-0.3.git65a5163
 - Obsolete ql2[45]00-firmware packages (rhbz 906898)
  
