@@ -1,9 +1,9 @@
 %global checkout 65a5163
-%global iwlwifi_release 21
+%global iwlwifi_release 22
 
 Name:		linux-firmware
 Version:	20130201
-Release:	0.4.git%{checkout}%{?dist}
+Release:	0.5.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -244,6 +244,7 @@ rm -f libertas/usb8388_v5.bin
 %install
 rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT/lib/firmware
+mkdir -p $RPM_BUILD_ROOT/lib/firmware/updates
 cp -r * $RPM_BUILD_ROOT/lib/firmware
 rm $RPM_BUILD_ROOT/lib/firmware/{WHENCE,LICENCE.*,LICENSE.*}
 
@@ -361,9 +362,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f linux-firmware.files
 %defattr(-,root,root,-)
+%dir /lib/firmware
+%dir /lib/firmware/updates
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Tue Mar 19 2013 Josh Boyer <jwboyer@redhat.com>
+- Own the firmware directories (rhbz 919249)
+
 * Thu Feb 21 2013 Josh Boyer <jwboyer@redhat.com> - 20130201-0.4.git65a5163
 - Obsolete netxen-firmware.  Again.  (rhbz 913680)
 
