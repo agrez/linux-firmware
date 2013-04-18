@@ -1,9 +1,9 @@
-%global checkout 65a5163
-%global iwlwifi_release 22
+%global checkout b584174
+%global iwlwifi_release 23
 
 Name:		linux-firmware
-Version:	20130201
-Release:	0.5.git%{checkout}%{?dist}
+Version:	20130418
+Release:	0.1.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -367,6 +367,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Thu Apr 18 2013 Josh Boyer <jwboyer@redhat.com> - 20130418-0.1.gitb584174
+- Update to latest upstream git tree
+
 * Tue Mar 19 2013 Josh Boyer <jwboyer@redhat.com>
 - Own the firmware directories (rhbz 919249)
 
