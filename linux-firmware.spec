@@ -1,11 +1,11 @@
 %global checkout b584174
-%global iwlwifi_release 23
+%global iwlwifi_release 24
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
 Version:	20130418
-Release:	0.2.git%{checkout}%{?dist}
+Release:	0.3.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -368,6 +368,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Mon May 20 2013 Kyle McMartin <kyle@redhat.com> - 20130418-0.3.gitb584174
+- Bump iwl* version numbers as well...
+
 * Mon May 20 2013 Kyle McMartin <kyle@redhat.com> - 20130418-0.2.gitb584174
 - UsrMove: move firmware to /usr/lib/firmware
 - Remove duplicate /usr/lib/firmware/updates entry (already in linux-firmware.dirs)
