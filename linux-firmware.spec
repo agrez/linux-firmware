@@ -1,9 +1,11 @@
 %global checkout b584174
 %global iwlwifi_release 23
 
+%global _firmwarepath	/usr/lib/firmware
+
 Name:		linux-firmware
 Version:	20130418
-Release:	0.1.git%{checkout}%{?dist}
+Release:	0.2.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
 Group:		System Environment/Kernel
@@ -220,7 +222,7 @@ Firmware for Marvell Libertas SD 8787 Network Adapter
 git init .
 if [ -z "$GIT_COMMITTER_NAME" ]; then
     git config user.email "nobody@fedoraproject.org"
-    git config user.name "Fedora X Ninjas"
+    git config user.name "Fedora linux-firmware packagers"
 fi
 git add .
 git commit -m init .
@@ -243,14 +245,14 @@ rm -f libertas/usb8388_v5.bin
 
 %install
 rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT/lib/firmware
-mkdir -p $RPM_BUILD_ROOT/lib/firmware/updates
-cp -r * $RPM_BUILD_ROOT/lib/firmware
-rm $RPM_BUILD_ROOT/lib/firmware/{WHENCE,LICENCE.*,LICENSE.*}
+mkdir -p $RPM_BUILD_ROOT/%{_firmwarepath}
+mkdir -p $RPM_BUILD_ROOT/%{_firmwarepath}/updates
+cp -r * $RPM_BUILD_ROOT/%{_firmwarepath}
+rm $RPM_BUILD_ROOT/%{_firmwarepath}/{WHENCE,LICENCE.*,LICENSE.*}
 
 # Create file list but exclude firmwares that we place in subpackages
 FILEDIR=`pwd`
-pushd $RPM_BUILD_ROOT/lib/firmware
+pushd $RPM_BUILD_ROOT/%{_firmwarepath}
 find . \! -type d > $FILEDIR/linux-firmware.files
 find . -type d | sed -e '/^.$/d' > $FILEDIR/linux-firmware.dirs
 popd
@@ -260,7 +262,7 @@ sed -i -e '/^iwlwifi/d' \
 	-i -e '/^libertas\/usb8388/d' \
 	-i -e '/^mrvl\/sd8787/d' \
 	linux-firmware.files
-sed -i -e 's/^/\/lib\/firmware\//' linux-firmware.{files,dirs}
+sed -i -e 's!^!/usr/lib/firmware/!' linux-firmware.{files,dirs}
 sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 
 %clean
@@ -269,104 +271,109 @@ rm -rf $RPM_BUILD_ROOT
 %files -n iwl100-firmware
 %defattr(-,root,root,-)
 %doc WHENCE LICENCE.iwlwifi_firmware
-/lib/firmware/iwlwifi-100-5.ucode
+%{_firmwarepath}/iwlwifi-100-5.ucode
 
 %files -n iwl105-firmware
 %defattr(-,root,root,-)
 %doc WHENCE LICENCE.iwlwifi_firmware
-/lib/firmware/iwlwifi-105-*.ucode
+%{_firmwarepath}/iwlwifi-105-*.ucode
 
 %files -n iwl135-firmware
 %defattr(-,root,root,-)
 %doc WHENCE LICENCE.iwlwifi_firmware
-/lib/firmware/iwlwifi-135-*.ucode
+%{_firmwarepath}/iwlwifi-135-*.ucode
 
 %files -n iwl1000-firmware
 %defattr(-,root,root,-)
 %doc WHENCE LICENCE.iwlwifi_firmware
-/lib/firmware/iwlwifi-1000-*.ucode
+%{_firmwarepath}/iwlwifi-1000-*.ucode
 
 %files -n iwl2000-firmware
 %defattr(-,root,root,-)
 %doc WHENCE LICENCE.iwlwifi_firmware
-/lib/firmware/iwlwifi-2000-*.ucode
+%{_firmwarepath}/iwlwifi-2000-*.ucode
 
 %files -n iwl2030-firmware
 %defattr(-,root,root,-)
 %doc WHENCE LICENCE.iwlwifi_firmware
-/lib/firmware/iwlwifi-2030-*.ucode
+%{_firmwarepath}/iwlwifi-2030-*.ucode
 
 %files -n iwl3945-firmware
 %defattr(-,root,root,-)
 %doc WHENCE LICENCE.iwlwifi_firmware
-/lib/firmware/iwlwifi-3945-*.ucode
+%{_firmwarepath}/iwlwifi-3945-*.ucode
 
 %files -n iwl4965-firmware
 %defattr(-,root,root,-)
 %doc WHENCE LICENCE.iwlwifi_firmware
-/lib/firmware/iwlwifi-4965-*.ucode
+%{_firmwarepath}/iwlwifi-4965-*.ucode
 
 %files -n iwl5000-firmware
 %defattr(-,root,root,-)
 %doc WHENCE LICENCE.iwlwifi_firmware
-/lib/firmware/iwlwifi-5000-*.ucode
+%{_firmwarepath}/iwlwifi-5000-*.ucode
 
 %files -n iwl5150-firmware
 %defattr(-,root,root,-)
 %doc WHENCE LICENCE.iwlwifi_firmware
-/lib/firmware/iwlwifi-5150-*.ucode
+%{_firmwarepath}/iwlwifi-5150-*.ucode
 
 %files -n iwl6000-firmware
 %defattr(-,root,root,-)
 %doc WHENCE LICENCE.iwlwifi_firmware
-/lib/firmware/iwlwifi-6000-*.ucode
+%{_firmwarepath}/iwlwifi-6000-*.ucode
 
 %files -n iwl6000g2a-firmware
 %defattr(-,root,root,-)
 %doc WHENCE LICENCE.iwlwifi_firmware
-/lib/firmware/iwlwifi-6000g2a-*.ucode
+%{_firmwarepath}/iwlwifi-6000g2a-*.ucode
 
 %files -n iwl6000g2b-firmware
 %defattr(-,root,root,-)
 %doc WHENCE LICENCE.iwlwifi_firmware
-/lib/firmware/iwlwifi-6000g2b-*.ucode
+%{_firmwarepath}/iwlwifi-6000g2b-*.ucode
 
 %files -n iwl6050-firmware
 %defattr(-,root,root,-)
 %doc WHENCE LICENCE.iwlwifi_firmware
-/lib/firmware/iwlwifi-6050-*.ucode
+%{_firmwarepath}/iwlwifi-6050-*.ucode
 
 %files -n libertas-usb8388-firmware
 %defattr(-,root,root,-)
 %doc WHENCE LICENCE.Marvell
-%dir /lib/firmware/libertas
-/lib/firmware/libertas/usb8388_v9.bin
+%dir %{_firmwarepath}/libertas
+%{_firmwarepath}/libertas/usb8388_v9.bin
 
 %files -n libertas-usb8388-olpc-firmware
 %defattr(-,root,root,-)
 %doc WHENCE LICENCE.Marvell
-%dir /lib/firmware/libertas
-/lib/firmware/libertas/usb8388_olpc.bin
+%dir %{_firmwarepath}/libertas
+%{_firmwarepath}/libertas/usb8388_olpc.bin
 
 %files -n libertas-sd8686-firmware
 %defattr(-,root,root,-)
 %doc WHENCE LICENCE.Marvell
-%dir /lib/firmware/libertas
-/lib/firmware/libertas/sd8686*
+%dir %{_firmwarepath}/libertas
+%{_firmwarepath}/libertas/sd8686*
 
 %files -n libertas-sd8787-firmware
 %defattr(-,root,root,-)
 %doc WHENCE LICENCE.Marvell
-%dir /lib/firmware/mrvl
-/lib/firmware/mrvl/sd8787*
+%dir %{_firmwarepath}/mrvl
+%{_firmwarepath}/mrvl/sd8787*
 
 %files -f linux-firmware.files
 %defattr(-,root,root,-)
-%dir /lib/firmware
-%dir /lib/firmware/updates
+%dir %{_firmwarepath}
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Mon May 20 2013 Kyle McMartin <kyle@redhat.com> - 20130418-0.2.gitb584174
+- UsrMove: move firmware to /usr/lib/firmware
+- Remove duplicate /usr/lib/firmware/updates entry (already in linux-firmware.dirs)
+- Simplify sed by using '!' instead of '/' as regexp delimiter
+- Fix date error (commited on Mon Feb 04, so change that entry)
+
 * Thu Apr 18 2013 Josh Boyer <jwboyer@redhat.com> - 20130418-0.1.gitb584174
 - Update to latest upstream git tree
 
@@ -376,7 +383,7 @@ rm -rf $RPM_BUILD_ROOT
 * Thu Feb 21 2013 Josh Boyer <jwboyer@redhat.com> - 20130201-0.4.git65a5163
 - Obsolete netxen-firmware.  Again.  (rhbz 913680)
 
-* Fri Feb 04 2013 Josh Boyer <jwboyer@redhat.com> - 20130201-0.3.git65a5163
+* Mon Feb 04 2013 Josh Boyer <jwboyer@redhat.com> - 20130201-0.3.git65a5163
 - Obsolete ql2[45]00-firmware packages (rhbz 906898)
  
 * Fri Feb 01 2013 Josh Boyer <jwboyer@redhat.com> 
