@@ -1,10 +1,10 @@
-%global checkout b584174
-%global firmware_release 25
+%global checkout 2892af0
+%global firmware_release 26
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
-Version:	20130418
+Version:	20130607
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -368,6 +368,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Fri Jun 07 2013 Josh Boyer <jwboyer@redhat.com> - 20130607-26.git2892af0
+- Update to latest upstream release
+- New radeon, bluetooth, rtl, and wl1xxx firmware
+
 * Mon May 20 2013 Kyle McMartin <kyle@redhat.com> - 20130418-25.gitb584174
 - Use a common version number for both the iwl*-firmware packages and
   linux-firmware itself.
