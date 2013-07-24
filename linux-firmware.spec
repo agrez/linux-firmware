@@ -1,10 +1,10 @@
-%global checkout 2892af0
-%global firmware_release 26
+%global checkout 31f6b30
+%global firmware_release 27
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
-Version:	20130607
+Version:	20130724
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -189,6 +189,26 @@ This package contains the firmware required by the iwlagn driver
 for Linux.  Usage of the firmware is subject to the terms and conditions
 contained inside the provided LICENSE file. Please read it carefully.
 
+%package -n iwl7260-firmware
+Summary:	Firmware for Intel(R) Wireless WiFi Link 7260 Series Adapters
+License:	Redistributable, no modification permitted
+Version:	22.0.7.0
+Release:	%{firmware_release}%{?dist}
+%description -n iwl7260-firmware
+This package contains the firmware required by the iwlagn driver
+for Linux.  Usage of the firmware is subject to the terms and conditions
+contained inside the provided LICENSE file. Please read it carefully.
+
+%package -n iwl3160-firmware
+Summary:	Firmware for Intel(R) Wireless WiFi Link 3160 Series Adapters
+License:	Redistributable, no modification permitted
+Version:	22.0.7.0
+Release:	%{firmware_release}%{?dist}
+%description -n iwl3160-firmware
+This package contains the firmware required by the iwlagn driver
+for Linux.  Usage of the firmware is subject to the terms and conditions
+contained inside the provided LICENSE file. Please read it carefully.
+
 %package -n libertas-usb8388-firmware
 Summary:	Firmware for Marvell Libertas USB 8388 Network Adapter
 License:	Redistributable, no modification permitted
@@ -338,6 +358,16 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-6050-*.ucode
 
+%files -n iwl7260-firmware
+%defattr(-,root,root,-)
+%doc WHENCE LICENCE.iwlwifi_firmware
+%{_firmwarepath}/iwlwifi-7260-*.ucode
+
+%files -n iwl3160-firmware
+%defattr(-,root,root,-)
+%doc WHENCE LICENCE.iwlwifi_firmware
+%{_firmwarepath}/iwlwifi-3160-*.ucode
+
 %files -n libertas-usb8388-firmware
 %defattr(-,root,root,-)
 %doc WHENCE LICENCE.Marvell
@@ -368,6 +398,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Wed Jul 24 2013 Josh Boyer <jwboyer@redhat.com> - 20130724-27.git31f6b30
+- Update to latest upstream
+- New rtl, iwl, and amd firmware
+
 * Fri Jun 07 2013 Josh Boyer <jwboyer@redhat.com> - 20130607-26.git2892af0
 - Update to latest upstream release
 - New radeon, bluetooth, rtl, and wl1xxx firmware
