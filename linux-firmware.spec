@@ -1,5 +1,5 @@
 %global checkout 31f6b30
-%global firmware_release 27
+%global firmware_release 28
 
 %global _firmwarepath	/usr/lib/firmware
 
@@ -263,6 +263,12 @@ rm -rf carl9170fw
 rm -f libertas/sd8686_v8*
 rm -f libertas/usb8388_v5.bin
 
+# Remove AMD microcode temporarily
+rm -rf amd-ucode
+
+# Remove firmware for Creative CA0132 HD as it's in alsa-firmware
+rm -f ctefx.bin ctspeq.bin
+
 %install
 rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT/%{_firmwarepath}
@@ -398,6 +404,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Thu Jul 25 2013 Josh Boyer <jwboyer@redhat.com> - 20130724-28.git31f6b30
+- Temporarily remove AMD microcode (rhbz 988263)
+- Remove Creative CA0132 HD-audio files as they're in alsa-firmware
+
 * Wed Jul 24 2013 Josh Boyer <jwboyer@redhat.com> - 20130724-27.git31f6b30
 - Update to latest upstream
 - New rtl, iwl, and amd firmware
