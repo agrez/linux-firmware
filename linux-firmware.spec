@@ -1,5 +1,5 @@
 %global checkout 31f6b30
-%global firmware_release 28
+%global firmware_release 29
 
 %global _firmwarepath	/usr/lib/firmware
 
@@ -25,6 +25,10 @@ Obsoletes:	ql2400-firmware < 5.08.00-2
 Obsoletes:	ql2500-firmware < 5.08.00-2
 Obsoletes:	rt61pci-firmware < 1.2-11
 Obsoletes:	rt73usb-firmware < 1.8-11
+
+Patch0: 0001-radeon-add-smc-ucode-for-radeon-GPUs.patch
+Patch1: 0002-radeon-add-ucode-for-BONAIRE-GPUs.patch
+Patch2: 0003-radeon-add-ucode-for-KABINI-GPUs.patch
 
 BuildRequires: git
 
@@ -246,6 +250,9 @@ if [ -z "$GIT_COMMITTER_NAME" ]; then
 fi
 git add .
 git commit -m init .
+git am %{PATCH0}
+git am %{PATCH1}
+git am %{PATCH2}
 
 %build
 # Remove firmware shipped in separate packages already
@@ -404,6 +411,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Fri Jul 26 2013 Dave Airlie <airlied@redhat.com> 20130724-29.git31f6b30
+- add radeon firmware which are lost on the way upstream (#988268)
+
 * Thu Jul 25 2013 Josh Boyer <jwboyer@redhat.com> - 20130724-28.git31f6b30
 - Temporarily remove AMD microcode (rhbz 988263)
 - Remove Creative CA0132 HD-audio files as they're in alsa-firmware
