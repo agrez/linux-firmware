@@ -1,5 +1,5 @@
 %global checkout 31f6b30
-%global firmware_release 29
+%global firmware_release 30
 
 %global _firmwarepath	/usr/lib/firmware
 
@@ -25,6 +25,7 @@ Obsoletes:	ql2400-firmware < 5.08.00-2
 Obsoletes:	ql2500-firmware < 5.08.00-2
 Obsoletes:	rt61pci-firmware < 1.2-11
 Obsoletes:	rt73usb-firmware < 1.8-11
+Conflicts:	microcode_ctl < 2.1-0
 
 Patch0: 0001-radeon-add-smc-ucode-for-radeon-GPUs.patch
 Patch1: 0002-radeon-add-ucode-for-BONAIRE-GPUs.patch
@@ -270,9 +271,6 @@ rm -rf carl9170fw
 rm -f libertas/sd8686_v8*
 rm -f libertas/usb8388_v5.bin
 
-# Remove AMD microcode temporarily
-rm -rf amd-ucode
-
 # Remove firmware for Creative CA0132 HD as it's in alsa-firmware
 rm -f ctefx.bin ctspeq.bin
 
@@ -411,6 +409,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Sat Jul 27 2013 Josh Boyer <jwboyer@redhat.com> - 20130724-30.git31f6b30
+- Add AMD ucode back in now that microcode_ctl doesn't provide it
+
 * Fri Jul 26 2013 Dave Airlie <airlied@redhat.com> 20130724-29.git31f6b30
 - add radeon firmware which are lost on the way upstream (#988268)
 
