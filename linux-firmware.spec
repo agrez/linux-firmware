@@ -1,5 +1,5 @@
 %global checkout 31f6b30
-%global firmware_release 30
+%global firmware_release 31
 
 %global _firmwarepath	/usr/lib/firmware
 
@@ -18,9 +18,9 @@ Provides:	kernel-firmware = %{version} xorg-x11-drv-ati-firmware = 7.0
 Obsoletes:	kernel-firmware < %{version} xorg-x11-drv-ati-firmware < 6.13.0-0.22
 Obsoletes:	ueagle-atm4-firmware < 1.0-5
 Obsoletes:	netxen-firmware < 4.0.534-9
-Obsoletes:	ql2100-firmware < 1.19.38-7
-Obsoletes:	ql2200-firmware < 2.02.08-7
-Obsoletes:	ql23xx-firmware < 3.03.28-5
+Obsoletes:	ql2100-firmware < 1.19.38-8
+Obsoletes:	ql2200-firmware < 2.02.08-8
+Obsoletes:	ql23xx-firmware < 3.03.28-6
 Obsoletes:	ql2400-firmware < 5.08.00-2
 Obsoletes:	ql2500-firmware < 5.08.00-2
 Obsoletes:	rt61pci-firmware < 1.2-11
@@ -409,6 +409,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Mon Sep 16 2013 Josh Boyer <jwboyer@fedoraproject.org> - 20130724-31.git31f6b30
+- Obsolete ql2x00-firmware packages again (rhbz 864959)
+
 * Sat Jul 27 2013 Josh Boyer <jwboyer@redhat.com> - 20130724-30.git31f6b30
 - Add AMD ucode back in now that microcode_ctl doesn't provide it
 
