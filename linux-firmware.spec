@@ -1,10 +1,10 @@
-%global checkout 31f6b30
-%global firmware_release 31
+%global checkout b8ac7c7e
+%global firmware_release 32
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
-Version:	20130724
+Version:	20131001
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -26,10 +26,6 @@ Obsoletes:	ql2500-firmware < 5.08.00-2
 Obsoletes:	rt61pci-firmware < 1.2-11
 Obsoletes:	rt73usb-firmware < 1.8-11
 Conflicts:	microcode_ctl < 2.1-0
-
-Patch0: 0001-radeon-add-smc-ucode-for-radeon-GPUs.patch
-Patch1: 0002-radeon-add-ucode-for-BONAIRE-GPUs.patch
-Patch2: 0003-radeon-add-ucode-for-KABINI-GPUs.patch
 
 BuildRequires: git
 
@@ -251,9 +247,6 @@ if [ -z "$GIT_COMMITTER_NAME" ]; then
 fi
 git add .
 git commit -m init .
-git am %{PATCH0}
-git am %{PATCH1}
-git am %{PATCH2}
 
 %build
 # Remove firmware shipped in separate packages already
@@ -409,6 +402,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Tue Oct 01 2013 Kyle McMartin <kyle@fedoraproject.org> - 20131001-32.gitb8ac7c7e
+- Update to a new git snapshot, drop radeon patches.
+
 * Mon Sep 16 2013 Josh Boyer <jwboyer@fedoraproject.org> - 20130724-31.git31f6b30
 - Obsolete ql2x00-firmware packages again (rhbz 864959)
 
