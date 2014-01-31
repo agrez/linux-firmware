@@ -1,10 +1,10 @@
-%global checkout b8ac7c7e
-%global firmware_release 32
+%global checkout d7f8a7c8
+%global firmware_release 35
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
-Version:	20131001
+Version:	20140131
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -193,7 +193,7 @@ contained inside the provided LICENSE file. Please read it carefully.
 %package -n iwl7260-firmware
 Summary:	Firmware for Intel(R) Wireless WiFi Link 7260 Series Adapters
 License:	Redistributable, no modification permitted
-Version:	22.0.7.0
+Version:	22.15.8.0
 Release:	%{firmware_release}%{?dist}
 %description -n iwl7260-firmware
 This package contains the firmware required by the iwlagn driver
@@ -203,7 +203,7 @@ contained inside the provided LICENSE file. Please read it carefully.
 %package -n iwl3160-firmware
 Summary:	Firmware for Intel(R) Wireless WiFi Link 3160 Series Adapters
 License:	Redistributable, no modification permitted
-Version:	22.0.7.0
+Version:	22.15.8.0
 Release:	%{firmware_release}%{?dist}
 %description -n iwl3160-firmware
 This package contains the firmware required by the iwlagn driver
@@ -402,6 +402,11 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Fri Jan 31 2014 Josh Boyer <jwboyer@fedoraproject.org> - 20140131-35.gitd7f8a7c8
+- Update to new snapshot
+- Updates for Intel 3160/7260, radeon HAWAII GPUs, and some rtlwifi chips
+- Fixes bugs 815579 1046935
+
 * Tue Oct 01 2013 Kyle McMartin <kyle@fedoraproject.org> - 20131001-32.gitb8ac7c7e
 - Update to a new git snapshot, drop radeon patches.
 
