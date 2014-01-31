@@ -38,7 +38,7 @@ Summary:	Firmware for Intel(R) Wireless WiFi Link 100 Series Adapters
 License:	Redistributable, no modification permitted
 Version:	39.31.5.1
 Release:	%{firmware_release}%{?dist}
-Obsoletes:	iwl100-firmware < iwl100-firmware-39.31.5.1-4
+Obsoletes:	iwl100-firmware < 39.31.5.1-4
 %description -n iwl100-firmware
 This package contains the firmware required by the iwlagn driver
 for Linux to support the iwl100 hardware.  Usage of the firmware
