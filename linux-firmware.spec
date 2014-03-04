@@ -1,5 +1,5 @@
 %global checkout d7f8a7c8
-%global firmware_release 35
+%global firmware_release 36
 
 %global _firmwarepath	/usr/lib/firmware
 
@@ -11,7 +11,7 @@ Summary:	Firmware files used by the Linux kernel
 Group:		System Environment/Kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
 URL:		http://www.kernel.org/
-Source0:	ftp://ftp.kernel.org/pub/linux/kernel/people/dwmw2/firmware/%{name}-%{version}.tar.gz
+Source0:	%{name}-%{version}.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:	noarch
 Provides:	kernel-firmware = %{version} xorg-x11-drv-ati-firmware = 7.0
@@ -40,7 +40,7 @@ Version:	39.31.5.1
 Release:	%{firmware_release}%{?dist}
 Obsoletes:	iwl100-firmware < 39.31.5.1-4
 %description -n iwl100-firmware
-This package contains the firmware required by the iwlagn driver
+This package contains the firmware required by the Intel wireless drivers
 for Linux to support the iwl100 hardware.  Usage of the firmware
 is subject to the terms and conditions contained inside the provided
 LICENSE file. Please read it carefully.
@@ -51,7 +51,7 @@ License:	Redistributable, no modification permitted
 Version:	18.168.6.1
 Release:	%{firmware_release}%{?dist}
 %description -n iwl105-firmware
-This package contains the firmware required by the iwlagn driver
+This package contains the firmware required by the Intel wireless drivers
 for Linux to support the iwl105 hardware.  Usage of the firmware
 is subject to the terms and conditions contained inside the provided
 LICENSE file. Please read it carefully.
@@ -62,7 +62,7 @@ License:	Redistributable, no modification permitted
 Version:	18.168.6.1
 Release:	%{firmware_release}%{?dist}
 %description -n iwl135-firmware
-This package contains the firmware required by the iwlagn driver
+This package contains the firmware required by the Intel wireless drivers
 for Linux to support the iwl135 hardware.  Usage of the firmware
 is subject to the terms and conditions contained inside the provided
 LICENSE file. Please read it carefully.
@@ -75,7 +75,7 @@ Epoch:		1
 Release:	%{firmware_release}%{?dist}
 Obsoletes:	iwl1000-firmware < 1:39.31.5.1-3
 %description -n iwl1000-firmware
-This package contains the firmware required by the iwlagn driver
+This package contains the firmware required by the Intel wireless drivers
 for Linux to support the iwl1000 hardware.  Usage of the firmware
 is subject to the terms and conditions contained inside the provided
 LICENSE file. Please read it carefully.
@@ -86,7 +86,7 @@ License:	Redistributable, no modification permitted
 Version:	18.168.6.1
 Release:	%{firmware_release}%{?dist}
 %description -n iwl2000-firmware
-This package contains the firmware required by the iwlagn driver
+This package contains the firmware required by the Intel wireless drivers
 for Linux to support the iwl2000 hardware.  Usage of the firmware
 is subject to the terms and conditions contained inside the provided
 LICENSE file. Please read it carefully.
@@ -97,7 +97,7 @@ License:	Redistributable, no modification permitted
 Version:	18.168.6.1
 Release:	%{firmware_release}%{?dist}
 %description -n iwl2030-firmware
-This package contains the firmware required by the iwlagn driver
+This package contains the firmware required by the Intel wireless drivers
 for Linux to support the iwl2030 hardware.  Usage of the firmware
 is subject to the terms and conditions contained inside the provided
 LICENSE file. Please read it carefully.
@@ -153,7 +153,7 @@ Version:	9.221.4.1
 Release:	%{firmware_release}%{?dist}
 Obsoletes:	iwl6000-firmware < 9.221.4.1-4
 %description -n iwl6000-firmware
-This package contains the firmware required by the iwlagn driver
+This package contains the firmware required by the Intel wireless drivers
 for Linux.  Usage of the firmware is subject to the terms and conditions
 contained inside the provided LICENSE file. Please read it carefully.
 
@@ -164,7 +164,7 @@ Version:	17.168.5.3
 Release:	%{firmware_release}%{?dist}
 Obsoletes:	iwl6000g2a-firmware < 17.168.5.3-3
 %description -n iwl6000g2a-firmware
-This package contains the firmware required by the iwlagn driver
+This package contains the firmware required by the Intel wireless drivers
 for Linux.  Usage of the firmware is subject to the terms and conditions
 contained inside the provided LICENSE file. Please read it carefully.
 
@@ -175,7 +175,7 @@ Version:	17.168.5.2
 Release:	%{firmware_release}%{?dist}
 Obsoletes:	iwl6000g2b-firmware < 17.168.5.2-3
 %description -n iwl6000g2b-firmware
-This package contains the firmware required by the iwlagn driver
+This package contains the firmware required by the Intel wireless drivers
 for Linux.  Usage of the firmware is subject to the terms and conditions
 contained inside the provided LICENSE file. Please read it carefully.
 
@@ -186,7 +186,7 @@ Version:	41.28.5.1
 Release:	%{firmware_release}%{?dist}
 Obsoletes:	iwl6050-firmware < 41.28.5.1-5
 %description -n iwl6050-firmware
-This package contains the firmware required by the iwlagn driver
+This package contains the firmware required by the Intel wireless drivers
 for Linux.  Usage of the firmware is subject to the terms and conditions
 contained inside the provided LICENSE file. Please read it carefully.
 
@@ -196,7 +196,7 @@ License:	Redistributable, no modification permitted
 Version:	22.15.8.0
 Release:	%{firmware_release}%{?dist}
 %description -n iwl7260-firmware
-This package contains the firmware required by the iwlagn driver
+This package contains the firmware required by the Intel wireless drivers
 for Linux.  Usage of the firmware is subject to the terms and conditions
 contained inside the provided LICENSE file. Please read it carefully.
 
@@ -206,7 +206,7 @@ License:	Redistributable, no modification permitted
 Version:	22.15.8.0
 Release:	%{firmware_release}%{?dist}
 %description -n iwl3160-firmware
-This package contains the firmware required by the iwlagn driver
+This package contains the firmware required by the Intel wireless drivers
 for Linux.  Usage of the firmware is subject to the terms and conditions
 contained inside the provided LICENSE file. Please read it carefully.
 
@@ -402,6 +402,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Tue Mar 04 2014 Josh Boyer <jwboyer@fedoraproject.org>
+- Fixup Intel wireless package descriptions and Source0 (rhbz 1070600)
+
 * Fri Jan 31 2014 Josh Boyer <jwboyer@fedoraproject.org> - 20140131-35.gitd7f8a7c8
 - Update to new snapshot
 - Updates for Intel 3160/7260, radeon HAWAII GPUs, and some rtlwifi chips
