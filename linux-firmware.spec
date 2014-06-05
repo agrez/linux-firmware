@@ -1,10 +1,10 @@
-%global checkout dec41bce
-%global firmware_release 37
+%global checkout a4f3bc03
+%global firmware_release 38
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
-Version:	20140317
+Version:	20140605
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -193,7 +193,7 @@ contained inside the provided LICENSE file. Please read it carefully.
 %package -n iwl7260-firmware
 Summary:	Firmware for Intel(R) Wireless WiFi Link 7260 Series Adapters
 License:	Redistributable, no modification permitted
-Version:	22.24.8.0
+Version:	23.214.9.0
 Release:	%{firmware_release}%{?dist}
 %description -n iwl7260-firmware
 This package contains the firmware required by the Intel wireless drivers
@@ -203,7 +203,7 @@ contained inside the provided LICENSE file. Please read it carefully.
 %package -n iwl3160-firmware
 Summary:	Firmware for Intel(R) Wireless WiFi Link 3160 Series Adapters
 License:	Redistributable, no modification permitted
-Version:	22.24.8.0
+Version:	23.214.9.0
 Release:	%{firmware_release}%{?dist}
 %description -n iwl3160-firmware
 This package contains the firmware required by the Intel wireless drivers
@@ -366,6 +366,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root,-)
 %doc WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-7260-*.ucode
+%{_firmwarepath}/iwlwifi-7265-*.ucode
 
 %files -n iwl3160-firmware
 %defattr(-,root,root,-)
@@ -402,6 +403,12 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Thu Jun 05 2014 Josh Boyer <jwboyer@fedoraproject.org> - 20140605-38.gita4f3bc03
+- Updates for Intel 3160/7260/7265 firmware (1087717)
+- Add firmware for rtl8723be (rhbz 1091753)
+- Updates for radeon CIK, SI/CI, and Mullins/Beema GPUs (rhbz 1094153)
+- Various other firmware updates
+
 * Mon Mar 17 2014 Josh Boyer <jwboyer@fedoraproject.org>
 - Updates for Intel 3160/7260 and BCM43362 (rhbz 1071590)
 
