@@ -1,10 +1,10 @@
-%global checkout a4f3bc03
-%global firmware_release 38
+%global checkout ce64fa89
+%global firmware_release 39
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
-Version:	20140605
+Version:	20140808
 Release:	%{firmware_release}.git%{checkout}%{?dist}.1
 Summary:	Firmware files used by the Linux kernel
 
@@ -127,7 +127,7 @@ contained inside the provided LICENSE file. Please read it carefully.
 %package -n iwl5000-firmware
 Summary:	Firmware for Intel® PRO/Wireless 5000 A/G/N network adaptors
 License:	Redistributable, no modification permitted
-Version:	8.83.5.1_1
+Version:	8.83.5.1
 Release:	%{firmware_release}%{?dist}.1
 Obsoletes:	iwl5000-firmware < 8.83.5.1_1-3
 %description -n iwl5000-firmware
@@ -240,6 +240,7 @@ Firmware for Marvell Libertas SD 8787 Network Adapter
 
 %prep
 %setup -q -n linux-firmware-%{checkout}
+%if 0
 git init .
 if [ -z "$GIT_COMMITTER_NAME" ]; then
     git config user.email "nobody@fedoraproject.org"
@@ -247,6 +248,7 @@ if [ -z "$GIT_COMMITTER_NAME" ]; then
 fi
 git add .
 git commit -m init .
+%endif
 
 %build
 # Remove firmware shipped in separate packages already
@@ -403,6 +405,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Fri Aug 08 2014 Kyle McMartin <kyle@fedoraproject.org> 20140808-39.gitce64fa89.1
+- Update from upstream linux-firmware.
+- Nuke unapplied radeon patches.
+
 * Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 20140605-38.gita4f3bc03.1
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
 
