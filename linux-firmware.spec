@@ -1,10 +1,10 @@
-%global checkout 13eb2086
-%global firmware_release 40
+%global checkout 365e80cce
+%global firmware_release 41
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
-Version:	20140828
+Version:	20140912
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -405,6 +405,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Fri Sep 12 2014 Josh Boyer <jwboyer@fedoraproject.org> 20140912-41.git365e80cce.fc22
+- Update to the latest upstream git snapshot
+
 * Thu Aug 28 2014 Josh Boyer <jwboyer@fedoraproject.org>
 - Update to latest upstream git snapshot for new radeon firmware (rhbz 1130738)
 - Fix versioning after mass rebuild and for iwl5000-firmware (rhbz 1130979)
