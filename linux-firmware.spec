@@ -1,10 +1,10 @@
-%global checkout 365e80cce
-%global firmware_release 41
+%global checkout 0e5f6377
+%global firmware_release 42
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
-Version:	20140912
+Version:	20141013
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -405,6 +405,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Mon Oct 13 2014 Josh Boyer <jwboyer@fedoraproject.org> 20141013-42.git0e5f6377.fc22
+- Update to latest upstream git snapshot
+
 * Fri Sep 12 2014 Josh Boyer <jwboyer@fedoraproject.org> 20140912-41.git365e80cce.fc22
 - Update to the latest upstream git snapshot
 
