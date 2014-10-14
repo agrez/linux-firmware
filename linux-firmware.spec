@@ -1,5 +1,5 @@
 %global checkout 0e5f6377
-%global firmware_release 42
+%global firmware_release 43
 
 %global _firmwarepath	/usr/lib/firmware
 
@@ -193,7 +193,7 @@ contained inside the provided LICENSE file. Please read it carefully.
 %package -n iwl7260-firmware
 Summary:	Firmware for Intel(R) Wireless WiFi Link 7260 Series Adapters
 License:	Redistributable, no modification permitted
-Version:	23.214.9.0
+Version:	25.222.9.0
 Release:	%{firmware_release}%{?dist}
 %description -n iwl7260-firmware
 This package contains the firmware required by the Intel wireless drivers
@@ -203,7 +203,7 @@ contained inside the provided LICENSE file. Please read it carefully.
 %package -n iwl3160-firmware
 Summary:	Firmware for Intel(R) Wireless WiFi Link 3160 Series Adapters
 License:	Redistributable, no modification permitted
-Version:	23.214.9.0
+Version:	25.222.9.0
 Release:	%{firmware_release}%{?dist}
 %description -n iwl3160-firmware
 This package contains the firmware required by the Intel wireless drivers
@@ -405,6 +405,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Tue Oct 14 2014 Josh Boyer <jwboyer@fedoraproject.org> 20141013-43.git0e5f6377.fc22
+- Fix 3160/7260 version numbers (rhbz 1110522)
+
 * Mon Oct 13 2014 Josh Boyer <jwboyer@fedoraproject.org> 20141013-42.git0e5f6377.fc22
 - Update to latest upstream git snapshot
 
