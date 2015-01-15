@@ -1,10 +1,10 @@
-%global checkout 0e5f6377
-%global firmware_release 43
+%global checkout 78535e88
+%global firmware_release 44
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
-Version:	20141013
+Version:	20150115
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -193,7 +193,8 @@ contained inside the provided LICENSE file. Please read it carefully.
 %package -n iwl7260-firmware
 Summary:	Firmware for Intel(R) Wireless WiFi Link 7260 Series Adapters
 License:	Redistributable, no modification permitted
-Version:	25.222.9.0
+Epoch:		1
+Version:	23.11.10.0
 Release:	%{firmware_release}%{?dist}
 %description -n iwl7260-firmware
 This package contains the firmware required by the Intel wireless drivers
@@ -203,7 +204,8 @@ contained inside the provided LICENSE file. Please read it carefully.
 %package -n iwl3160-firmware
 Summary:	Firmware for Intel(R) Wireless WiFi Link 3160 Series Adapters
 License:	Redistributable, no modification permitted
-Version:	25.222.9.0
+Epoch:		1
+Version:	23.11.10.0
 Release:	%{firmware_release}%{?dist}
 %description -n iwl3160-firmware
 This package contains the firmware required by the Intel wireless drivers
@@ -369,6 +371,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-7260-*.ucode
 %{_firmwarepath}/iwlwifi-7265-*.ucode
+%{_firmwarepath}/iwlwifi-7265D-*.ucode
 
 %files -n iwl3160-firmware
 %defattr(-,root,root,-)
@@ -405,6 +408,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Thu Jan 15 2015 Josh Boyer <jwboyer@fedoraproject.org> 20150115-44.git78535e88.fc22
+- Update to latest upstream git snapshot
+- Adjust iwl{3160,7260} version numbers (rhbz 1167695)
+
 * Tue Oct 14 2014 Josh Boyer <jwboyer@fedoraproject.org> 20141013-43.git0e5f6377.fc22
 - Fix 3160/7260 version numbers (rhbz 1110522)
 
