@@ -1,10 +1,10 @@
-%global checkout 78535e88
-%global firmware_release 44
+%global checkout 17657c35
+%global firmware_release 45
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
-Version:	20150115
+Version:	20150213
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -160,7 +160,7 @@ contained inside the provided LICENSE file. Please read it carefully.
 %package -n iwl6000g2a-firmware
 Summary:	Firmware for Intel(R) Wireless WiFi Link 6005 Series Adapters
 License:	Redistributable, no modification permitted
-Version:	17.168.5.3
+Version:	18.168.6.1
 Release:	%{firmware_release}%{?dist}
 Obsoletes:	iwl6000g2a-firmware < 17.168.5.3-3
 %description -n iwl6000g2a-firmware
@@ -171,7 +171,7 @@ contained inside the provided LICENSE file. Please read it carefully.
 %package -n iwl6000g2b-firmware
 Summary:	Firmware for Intel(R) Wireless WiFi Link 6030 Series Adapters
 License:	Redistributable, no modification permitted
-Version:	17.168.5.2
+Version:	18.168.6.1
 Release:	%{firmware_release}%{?dist}
 Obsoletes:	iwl6000g2b-firmware < 17.168.5.2-3
 %description -n iwl6000g2b-firmware
@@ -194,7 +194,7 @@ contained inside the provided LICENSE file. Please read it carefully.
 Summary:	Firmware for Intel(R) Wireless WiFi Link 7260 Series Adapters
 License:	Redistributable, no modification permitted
 Epoch:		1
-Version:	23.11.10.0
+Version:	25.15.12.0
 Release:	%{firmware_release}%{?dist}
 %description -n iwl7260-firmware
 This package contains the firmware required by the Intel wireless drivers
@@ -205,7 +205,7 @@ contained inside the provided LICENSE file. Please read it carefully.
 Summary:	Firmware for Intel(R) Wireless WiFi Link 3160 Series Adapters
 License:	Redistributable, no modification permitted
 Epoch:		1
-Version:	23.11.10.0
+Version:	25.15.12.0
 Release:	%{firmware_release}%{?dist}
 %description -n iwl3160-firmware
 This package contains the firmware required by the Intel wireless drivers
@@ -408,6 +408,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Fri Feb 13 2015 Josh Boyer <jwboyer@fedoraproject.org> 20150213-45.git17657c35
+- Update to latest upstream git snapshot
+- Firmware for Surface Pro 3 WLAN/Bluetooth (rhbz 1185804)
+
 * Thu Jan 15 2015 Josh Boyer <jwboyer@fedoraproject.org> 20150115-44.git78535e88.fc22
 - Update to latest upstream git snapshot
 - Adjust iwl{3160,7260} version numbers (rhbz 1167695)
