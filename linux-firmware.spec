@@ -1,10 +1,10 @@
-%global checkout 17657c35
-%global firmware_release 45
+%global checkout 020e534e
+%global firmware_release 46
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
-Version:	20150213
+Version:	20150316
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -408,6 +408,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Mon Mar 16 2015 Josh Boyer <jwboyer@fedoraproject.org> 20150316-46.git020e534e
+- Update to latest upstream git snapshot
+
 * Fri Feb 13 2015 Josh Boyer <jwboyer@fedoraproject.org> 20150213-45.git17657c35
 - Update to latest upstream git snapshot
 - Firmware for Surface Pro 3 WLAN/Bluetooth (rhbz 1185804)
