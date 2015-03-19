@@ -1,5 +1,5 @@
 %global checkout 020e534e
-%global firmware_release 46
+%global firmware_release 47
 
 %global _firmwarepath	/usr/lib/firmware
 
@@ -256,8 +256,6 @@ git commit -m init .
 # Remove firmware shipped in separate packages already
 # Perhaps these should be built as subpackages of linux-firmware?
 rm -rf ess korg sb16 yamaha
-# And _some_ conexant firmware.
-rm v4l-cx23418-apu.fw v4l-cx23418-cpu.fw v4l-cx23418-dig.fw v4l-cx25840.fw
 
 # Remove source files we don't need to install
 rm -f usbdux/*dux */*.asm
@@ -408,6 +406,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Thu Mar 19 2015 Josh Boyer <jwboyer@fedoraproject.org>
+- Ship the cx18x firmware files (rhbz 1203385)
+
 * Mon Mar 16 2015 Josh Boyer <jwboyer@fedoraproject.org> 20150316-46.git020e534e
 - Update to latest upstream git snapshot
 
