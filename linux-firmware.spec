@@ -1,10 +1,10 @@
-%global checkout 020e534e
-%global firmware_release 47
+%global checkout ec89525b
+%global firmware_release 48
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
-Version:	20150316
+Version:	20150410
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -406,6 +406,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Fri Apr 10 2015 Josh Boyer <jwboyer@fedoraproject.org> 20150415-47.gitec89525b
+- Update to the latest upstream git snapshot
+
 * Thu Mar 19 2015 Josh Boyer <jwboyer@fedoraproject.org>
 - Ship the cx18x firmware files (rhbz 1203385)
 
