@@ -1,5 +1,5 @@
 %global checkout ec89525b
-%global firmware_release 48
+%global firmware_release 49
 
 %global _firmwarepath	/usr/lib/firmware
 
@@ -256,6 +256,8 @@ git commit -m init .
 # Remove firmware shipped in separate packages already
 # Perhaps these should be built as subpackages of linux-firmware?
 rm -rf ess korg sb16 yamaha
+# And the conexant firmware shipped in ivtv-firmware
+rm v4l-cx25840.fw
 
 # Remove source files we don't need to install
 rm -f usbdux/*dux */*.asm
@@ -406,6 +408,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Tue Apr 14 2015 Josh Boyer <jwboyer@fedoraproject.org> 20150415-49.gitec89525b
+- Fix conflict with ivtv-firmware (rhbz 1203385)
+
 * Fri Apr 10 2015 Josh Boyer <jwboyer@fedoraproject.org> 20150415-47.gitec89525b
 - Update to the latest upstream git snapshot
 
