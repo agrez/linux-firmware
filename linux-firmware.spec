@@ -1,5 +1,5 @@
 %global checkout ec89525b
-%global firmware_release 50
+%global firmware_release 51
 
 %global _firmwarepath	/usr/lib/firmware
 
@@ -25,6 +25,7 @@ Obsoletes:	ql2400-firmware < 5.08.00-2
 Obsoletes:	ql2500-firmware < 5.08.00-2
 Obsoletes:	rt61pci-firmware < 1.2-11
 Obsoletes:	rt73usb-firmware < 1.8-11
+Obsoletes:	ivtv-firmware < 2:20080701-27
 Conflicts:	microcode_ctl < 2.1-0
 
 BuildRequires: git
@@ -406,6 +407,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Wed May 06 2015 Josh Boyer <jwboyer@fedoraproject.org> 20150415-51.gitec89525b
+- Obsoletes ivtv-firmware (rbhz 1211055)
+
 * Fri May 01 2015 Josh Boyer <jwboyer@fedoraproject.org> 20150415-50.gitec89525b
 - Add v4l-cx25840.fw back now that ivtv-firmware is retired (rhbz 1211055)
 
