@@ -26,6 +26,7 @@ Obsoletes:	ql2500-firmware < 5.08.00-2
 Obsoletes:	rt61pci-firmware < 1.2-11
 Obsoletes:	rt73usb-firmware < 1.8-11
 Obsoletes:	ivtv-firmware < 2:20080701-27
+Obsoletes:	cx18-firmware < 20080628-10
 Conflicts:	microcode_ctl < 2.1-0
 
 BuildRequires: git
@@ -410,6 +411,7 @@ rm -rf $RPM_BUILD_ROOT
 * Thu May 21 2015 Josh Boyer <jwboyer@fedoraproject.org> 20150521-52.git3161bfa4
 - Update to latest upstream git snapshot
 - Updated iwlwifi 316x/726x firmware
+- Add cx18-firmware Obsoletes from David Ward (rhbz 1222164)
 
 * Wed May 06 2015 Josh Boyer <jwboyer@fedoraproject.org> 20150415-51.gitec89525b
 - Obsoletes ivtv-firmware (rbhz 1211055)
