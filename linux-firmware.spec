@@ -1,10 +1,10 @@
-%global checkout ec89525b
-%global firmware_release 51
+%global checkout 3161bfa4
+%global firmware_release 52
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
-Version:	20150410
+Version:	20150521
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -195,7 +195,7 @@ contained inside the provided LICENSE file. Please read it carefully.
 Summary:	Firmware for Intel(R) Wireless WiFi Link 7260 Series Adapters
 License:	Redistributable, no modification permitted
 Epoch:		1
-Version:	25.15.12.0
+Version:	25.17.12.0
 Release:	%{firmware_release}%{?dist}
 %description -n iwl7260-firmware
 This package contains the firmware required by the Intel wireless drivers
@@ -206,7 +206,7 @@ contained inside the provided LICENSE file. Please read it carefully.
 Summary:	Firmware for Intel(R) Wireless WiFi Link 3160 Series Adapters
 License:	Redistributable, no modification permitted
 Epoch:		1
-Version:	25.15.12.0
+Version:	25.17.12.0
 Release:	%{firmware_release}%{?dist}
 %description -n iwl3160-firmware
 This package contains the firmware required by the Intel wireless drivers
@@ -407,6 +407,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Thu May 21 2015 Josh Boyer <jwboyer@fedoraproject.org> 20150521-52.git3161bfa4
+- Update to latest upstream git snapshot
+- Updated iwlwifi 316x/726x firmware
+
 * Wed May 06 2015 Josh Boyer <jwboyer@fedoraproject.org> 20150415-51.gitec89525b
 - Obsoletes ivtv-firmware (rbhz 1211055)
 
