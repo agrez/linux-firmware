@@ -1,10 +1,10 @@
-%global checkout 3161bfa4
-%global firmware_release 53
+%global checkout 69640304
+%global firmware_release 54
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
-Version:	20150521
+Version:	20150715
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -195,7 +195,7 @@ contained inside the provided LICENSE file. Please read it carefully.
 Summary:	Firmware for Intel(R) Wireless WiFi Link 7260 Series Adapters
 License:	Redistributable, no modification permitted
 Epoch:		1
-Version:	25.17.12.0
+Version:	25.30.13.0
 Release:	%{firmware_release}%{?dist}
 %description -n iwl7260-firmware
 This package contains the firmware required by the Intel wireless drivers
@@ -206,7 +206,7 @@ contained inside the provided LICENSE file. Please read it carefully.
 Summary:	Firmware for Intel(R) Wireless WiFi Link 3160 Series Adapters
 License:	Redistributable, no modification permitted
 Epoch:		1
-Version:	25.17.12.0
+Version:	25.30.13.0
 Release:	%{firmware_release}%{?dist}
 %description -n iwl3160-firmware
 This package contains the firmware required by the Intel wireless drivers
@@ -371,6 +371,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_firmwarepath}/iwlwifi-7260-*.ucode
 %{_firmwarepath}/iwlwifi-7265-*.ucode
 %{_firmwarepath}/iwlwifi-7265D-*.ucode
+%{_firmwarepath}/iwlwifi-8000C-*.ucode
 
 %files -n iwl3160-firmware
 %defattr(-,root,root,-)
@@ -407,6 +408,12 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Wed Jul 15 2015 Josh Boyer <jwboyer@fedoraproject.org> 20150715-54.git69640304
+- Update to latest upstream git snapshot
+- New iwlwifi firmware for 726x/316x/8000 devices
+- New firmware for i915 skylake and radeon devices
+- Various other updates
+
 * Tue Jun 23 2015 Josh Boyer <jwboyer@fedoraproject.org> 20150521-53.git3161bfa4
 - Don't obsolete ivtv-firmware any longer (rhbz 1232773)
 
