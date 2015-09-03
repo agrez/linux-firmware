@@ -28,6 +28,8 @@ Obsoletes:	rt73usb-firmware < 1.8-11
 Obsoletes:	cx18-firmware < 20080628-10
 Conflicts:	microcode_ctl < 2.1-0
 
+Patch0: 0001-amdgpu-add-firmware-for-VI-asics.patch
+
 BuildRequires: git
 
 %description
@@ -243,7 +245,7 @@ Firmware for Marvell Libertas SD 8787 Network Adapter
 
 %prep
 %setup -q -n linux-firmware-%{checkout}
-%if 0
+%if 1
 git init .
 if [ -z "$GIT_COMMITTER_NAME" ]; then
     git config user.email "nobody@fedoraproject.org"
@@ -251,6 +253,8 @@ if [ -z "$GIT_COMMITTER_NAME" ]; then
 fi
 git add .
 git commit -m init .
+
+git am %{PATCH0}
 %endif
 
 %build
@@ -409,6 +413,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %changelog
 * Thu Sep 03 2015 Josh Boyer <jwboyer@fedoraproject.org> 20150903-55.git38358cfc
+- Add firmware from Alex Deucher for amdgpu driver (rhbz 1259542)
+
+* Thu Sep 03 2015 Josh Boyer <jwboyer@fedoraproject.org>
 - Update to latest upstream git snapshot
 - Updates for nvidia, bnx2x, and atmel devices
 
