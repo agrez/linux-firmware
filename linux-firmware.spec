@@ -1,10 +1,10 @@
-%global checkout 69640304
-%global firmware_release 54
+%global checkout 38358cfc
+%global firmware_release 55
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
-Version:	20150715
+Version:	20150903
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -408,6 +408,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Thu Sep 03 2015 Josh Boyer <jwboyer@fedoraproject.org> 20150903-55.git38358cfc
+- Update to latest upstream git snapshot
+- Updates for nvidia, bnx2x, and atmel devices
+
 * Wed Jul 15 2015 Josh Boyer <jwboyer@fedoraproject.org> 20150715-54.git69640304
 - Update to latest upstream git snapshot
 - New iwlwifi firmware for 726x/316x/8000 devices
