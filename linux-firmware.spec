@@ -1,10 +1,10 @@
-%global checkout 38358cfc
-%global firmware_release 55
+%global checkout 6ebf5d57
+%global firmware_release 56
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
-Version:	20150903
+Version:	20150904
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -27,8 +27,6 @@ Obsoletes:	rt61pci-firmware < 1.2-11
 Obsoletes:	rt73usb-firmware < 1.8-11
 Obsoletes:	cx18-firmware < 20080628-10
 Conflicts:	microcode_ctl < 2.1-0
-
-Patch0: 0001-amdgpu-add-firmware-for-VI-asics.patch
 
 BuildRequires: git
 
@@ -245,7 +243,7 @@ Firmware for Marvell Libertas SD 8787 Network Adapter
 
 %prep
 %setup -q -n linux-firmware-%{checkout}
-%if 1
+%if 0
 git init .
 if [ -z "$GIT_COMMITTER_NAME" ]; then
     git config user.email "nobody@fedoraproject.org"
@@ -254,7 +252,6 @@ fi
 git add .
 git commit -m init .
 
-git am %{PATCH0}
 %endif
 
 %build
@@ -412,6 +409,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Fri Sep 04 2015 Josh Boyer <jwboyer@fedoraproject.org> 20150904-56.git6ebf5d57
+- Update to latest upstream git snapshot
+- Includes amdgpu firmware and skylake updates
+
 * Thu Sep 03 2015 Josh Boyer <jwboyer@fedoraproject.org> 20150903-55.git38358cfc
 - Add firmware from Alex Deucher for amdgpu driver (rhbz 1259542)
 
