@@ -1,10 +1,10 @@
-%global checkout 6ebf5d57
-%global firmware_release 56
+%global checkout d82d3c1e
+%global firmware_release 57
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
-Version:	20150904
+Version:	20151012
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -409,6 +409,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Mon Oct 12 2015 Josh Boyer <jwboyer@fedoraproject.org> 20151012-57.gitd82d3c1e
+- Update to latest upstream snapshot
+- Includes skylake and intel bluetooth firmware updates
+
 * Fri Sep 04 2015 Josh Boyer <jwboyer@fedoraproject.org> 20150904-56.git6ebf5d57
 - Update to latest upstream git snapshot
 - Includes amdgpu firmware and skylake updates
