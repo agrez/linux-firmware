@@ -1,10 +1,10 @@
-%global checkout 66d3d8d7
-%global firmware_release 58
+%global checkout a109a8ff
+%global firmware_release 59
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
-Version:	20151030
+Version:	20151130
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -409,6 +409,11 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Mon Nov 30 2015 Josh Boyer <jwboyer@fedoraproject.org> 20151130-59.gita109a8ff
+- Update to latest upstream snapshot
+- Includes -16 ucode for iwlwifi, skylake dmc and audio updates, brcm updates
+  bnx2x, and others
+
 * Fri Oct 30 2015 Josh Boyer <jwboyer@fedoraproject.org> 20151030-58.git66d3d8d7
 - Update to latest upstream snapshot
 - Includes ath10k and mwlwifi firmware updates (rhbz 1276360)
