@@ -1,10 +1,10 @@
-%global checkout a109a8ff
-%global firmware_release 59
+%global checkout bbe4917c
+%global firmware_release 60
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
-Version:	20151130
+Version:	20151214
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -409,6 +409,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Mon Dec 14 2015 Josh Boyer <jwboyer@fedoraproject.org> 20151214-60.gitbbe4917c
+- Update to latest upstream snapshot
+- Includes firmware for mt7601u (rhbz 1264631)
+
 * Mon Nov 30 2015 Josh Boyer <jwboyer@fedoraproject.org> 20151130-59.gita109a8ff
 - Update to latest upstream snapshot
 - Includes -16 ucode for iwlwifi, skylake dmc and audio updates, brcm updates
