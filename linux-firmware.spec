@@ -1,10 +1,10 @@
-%global checkout bbe4917c
-%global firmware_release 60
+%global checkout 91d5dd13
+%global firmware_release 61
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
-Version:	20151214
+Version:	20160204
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -409,6 +409,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Thu Feb 04 2016 Josh Boyer <jwboyer@fedoraproject.org> 20160204-61.git91d5dd13
+- Update to latest upstream snashot
+- rtlwifi, iwlwifi, intel bluetooth, skylake audio updates
+
 * Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 20151214-60.gitbbe4917c.1
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
 
