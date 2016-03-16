@@ -1,10 +1,10 @@
-%global checkout 91d5dd13
-%global firmware_release 61
+%global checkout deb1d836
+%global firmware_release 62
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
-Version:	20160204
+Version:	20160316
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -373,11 +373,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_firmwarepath}/iwlwifi-7265-*.ucode
 %{_firmwarepath}/iwlwifi-7265D-*.ucode
 %{_firmwarepath}/iwlwifi-8000C-*.ucode
+%{_firmwarepath}/iwlwifi-8265-*.ucode
 
 %files -n iwl3160-firmware
 %defattr(-,root,root,-)
 %doc WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-3160-*.ucode
+%{_firmwarepath}/iwlwifi-3168-*.ucode
 
 %files -n libertas-usb8388-firmware
 %defattr(-,root,root,-)
@@ -409,6 +411,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Wed Mar 16 2016 Josh Boyer <jwboyer@fedoraproject.org> 20160316-62.gitdeb1d836
+- Update to latest upstream snapshot
+- New firmware for iwlwifi 3168, 7265D, 8000C, and 8265 devices
+
 * Thu Feb 04 2016 Josh Boyer <jwboyer@fedoraproject.org> 20160204-61.git91d5dd13
 - Update to latest upstream snashot
 - rtlwifi, iwlwifi, intel bluetooth, skylake audio updates
