@@ -1,10 +1,10 @@
-%global checkout deb1d836
-%global firmware_release 62
+%global checkout 5f8ca0c
+%global firmware_release 63
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
-Version:	20160316
+Version:	20160321
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -411,6 +411,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Mon Mar 21 2016 Josh Boyer <jwboyer@fedoraproject.org> 20160321-63.git5f8ca0c
+- Update to latest upstream snapshot
+- New Skylake GuC and audio firmware, AMD ucode updates
+
 * Wed Mar 16 2016 Josh Boyer <jwboyer@fedoraproject.org> 20160316-62.gitdeb1d836
 - Update to latest upstream snapshot
 - New firmware for iwlwifi 3168, 7265D, 8000C, and 8265 devices
