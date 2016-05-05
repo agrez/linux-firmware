@@ -1,10 +1,10 @@
-%global checkout 5f8ca0c
-%global firmware_release 63
+%global checkout 8afadbe5
+%global firmware_release 64
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
-Version:	20160321
+Version:	20160505
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -411,6 +411,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Thu May 05 2016 Josh Boyer <jwboyer@fedoraproject.org> 20160505-64.git8afadbe5
+- Update to the latest upstream snapshot
+- AMD, intel, and QCA6xxx updates (rhbz 1294263)
+
 * Mon Mar 21 2016 Josh Boyer <jwboyer@fedoraproject.org> 20160321-63.git5f8ca0c
 - Update to latest upstream snapshot
 - New Skylake GuC and audio firmware, AMD ucode updates
