@@ -1,10 +1,10 @@
-%global checkout 8afadbe5
-%global firmware_release 64
+%global checkout 80d463be
+%global firmware_release 65
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
-Version:	20160505
+Version:	20160526
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -411,6 +411,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Thu May 26 2016 Josh Boyer <jwboyer@fedoraproject.org> 20160526-65.git80d463be
+- Update to the latest upstream snapshot
+- amdgpu, Skylake audio, and rt2xxx wifi firmware updates
+
 * Thu May 05 2016 Josh Boyer <jwboyer@fedoraproject.org> 20160505-64.git8afadbe5
 - Update to the latest upstream snapshot
 - AMD, intel, and QCA6xxx updates (rhbz 1294263)
