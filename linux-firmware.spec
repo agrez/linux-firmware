@@ -1,10 +1,10 @@
-%global checkout a4bbc811
-%global firmware_release 66
+%global checkout 7c3dfc0b
+%global firmware_release 67
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
-Version:	20160609
+Version:	20160816
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -411,6 +411,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Tue Aug 16 2016 Josh Boyer <jwboyer@fedoraproject.org> 20160816-67.git7c3dfc0b
+- Update to the latest upstream snapshot (rhbz 1367203)
+- Intel audio, rockchip, amdgpu, iwlwifi, nvidia pascal updates
+
 * Thu Jun 09 2016 Josh Boyer <jwboyer@fedoraproject.org> 20160609-66.gita4bbc811
 - Update to the latest upstream snapshot
 - Intel bluetooth, radeon smc, Intel braswell/broxton audio, cxgb4 updates
