@@ -1,10 +1,10 @@
-%global checkout 7c3dfc0b
-%global firmware_release 67
+%global checkout 42ad5367
+%global firmware_release 68
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
-Version:	20160816
+Version:	20160923
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -411,6 +411,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Fri Sep 23 2016 Josh Boyer <jwboyer@fedoraproject.org> 20160923-68.git42ad5367
+- Update to the latest upstream snapshot
+- ath10k, amdgpu, mediatek, brcm, marvell updates
+ 
 * Tue Aug 16 2016 Josh Boyer <jwboyer@fedoraproject.org> 20160816-67.git7c3dfc0b
 - Update to the latest upstream snapshot (rhbz 1367203)
 - Intel audio, rockchip, amdgpu, iwlwifi, nvidia pascal updates
