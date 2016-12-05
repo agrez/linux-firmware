@@ -1,10 +1,10 @@
-%global checkout 42ad5367
-%global firmware_release 68
+%global checkout 91ddce49
+%global firmware_release 69
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
-Version:	20160923
+Version:	20161205
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -271,6 +271,9 @@ rm -f libertas/usb8388_v5.bin
 # Remove firmware for Creative CA0132 HD as it's in alsa-firmware
 rm -f ctefx.bin ctspeq.bin
 
+# Remove the check_whence.py file
+rm -f check_whence.py
+
 %install
 rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT/%{_firmwarepath}
@@ -411,6 +414,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Mon Dec 05 2016 Josh Boyer <jwboyer@fedoraproject.org> 20161205-69.git91ddce49
+- Update to the latest upstream snapshot
+- New intel bluetooth and rtlwifi firmware
+
 * Fri Sep 23 2016 Josh Boyer <jwboyer@fedoraproject.org> 20160923-68.git42ad5367
 - Update to the latest upstream snapshot
 - ath10k, amdgpu, mediatek, brcm, marvell updates
