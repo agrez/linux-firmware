@@ -1,5 +1,5 @@
 %global checkout 91ddce49
-%global firmware_release 69
+%global firmware_release 70
 
 %global _firmwarepath	/usr/lib/firmware
 
@@ -411,9 +411,12 @@ rm -rf $RPM_BUILD_ROOT
 %files -f linux-firmware.files
 %defattr(-,root,root,-)
 %dir %{_firmwarepath}
-%doc WHENCE LICENCE.* LICENSE.*
+%license WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Wed Feb 01 2017 Stephen Gallagher <sgallagh@redhat.com> - 20161205-70.git91ddce49
+- Add missing %%license macro
+
 * Mon Dec 05 2016 Josh Boyer <jwboyer@fedoraproject.org> 20161205-69.git91ddce49
 - Update to the latest upstream snapshot
 - New intel bluetooth and rtlwifi firmware
