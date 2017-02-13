@@ -1,10 +1,10 @@
-%global checkout 91ddce49
-%global firmware_release 70
+%global checkout 6d3bc888
+%global firmware_release 71
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
-Version:	20161205
+Version:	20170213
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -414,6 +414,9 @@ rm -rf $RPM_BUILD_ROOT
 %license WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Mon Feb 13 2017 Josh Boyer <jwboyer@fedoraproject.org> - 20170213-71.git6d3bc888
+- Update to the latest upstream snapshot
+
 * Wed Feb 01 2017 Stephen Gallagher <sgallagh@redhat.com> - 20161205-70.git91ddce49
 - Add missing %%license macro
 
