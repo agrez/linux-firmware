@@ -1,10 +1,10 @@
-%global checkout 6d3bc888
-%global firmware_release 71
+%global checkout 695f2d6d
+%global firmware_release 72
 
 %global _firmwarepath	/usr/lib/firmware
 
 Name:		linux-firmware
-Version:	20170213
+Version:	20170313
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -414,6 +414,11 @@ rm -rf $RPM_BUILD_ROOT
 %license WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Mon Mar 13 2017 Josh Boyer <jwboyer@fedoraproject.org> - 20170313-72.git695f2d6d
+- Update to the latest upstream snapshot
+- New nvidia, AMD, and i915 GPU firmware
+- Updated iwlwifi and intel bluetooth firmware
+
 * Mon Feb 13 2017 Josh Boyer <jwboyer@fedoraproject.org> - 20170213-71.git6d3bc888
 - Update to the latest upstream snapshot
 
