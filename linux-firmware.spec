@@ -1,10 +1,11 @@
-%global checkout 695f2d6d
-%global firmware_release 72
+%global checkout b1413458
+%global firmware_release 73
 
 %global _firmwarepath	/usr/lib/firmware
+%define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20170313
+Version:	20170419
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -414,6 +415,11 @@ rm -rf $RPM_BUILD_ROOT
 %license WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Wed Apr 19 2017 Josh Boyer <jwboyer@fedoraproject.org> - 20170419-73.gitb1413458
+- Update to the latest upstream snapshot
+- New nvidia, netronome, and marvell firmware
+- Updated intel audio firmware
+
 * Mon Mar 13 2017 Josh Boyer <jwboyer@fedoraproject.org> - 20170313-72.git695f2d6d
 - Update to the latest upstream snapshot
 - New nvidia, AMD, and i915 GPU firmware
