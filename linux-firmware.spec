@@ -1,11 +1,11 @@
-%global checkout b1413458
-%global firmware_release 73
+%global checkout 37857004
+%global firmware_release 74
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20170419
+Version:	20170605
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -415,6 +415,9 @@ rm -rf $RPM_BUILD_ROOT
 %license WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Mon Jun 05 2017 Josh Boyer <jwboyer@fedoraproject.org> - 20170605-74.git37857004
+- Update to latest upstream snapshot
+
 * Wed Apr 19 2017 Josh Boyer <jwboyer@fedoraproject.org> - 20170419-73.gitb1413458
 - Update to the latest upstream snapshot
 - New nvidia, netronome, and marvell firmware
