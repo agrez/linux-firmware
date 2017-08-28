@@ -1,11 +1,11 @@
-%global checkout a3a26af2
-%global firmware_release 75
+%global checkout b78acc9
+%global firmware_release 76
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20170622
+Version:	20170828
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 
@@ -415,6 +415,10 @@ rm -rf $RPM_BUILD_ROOT
 %license WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Mon Aug 28 2017 Josh Boyer <jwboyer@fedoraproject.org> - 20170828-76.gitb78acc9
+- Update to latest upstream snapshot
+- ath10k, iwlwifi, kabylake, liquidio, amdgpu, and cavium crypot updates
+
 * Thu Jun 22 2017 Josh Boyer <jwboyer@fedoraproject.org> - 20170622-75.gita3a26af2
 - Update to latest upstream snapshot
 - imx, qcom, and tegra ARM related updates
