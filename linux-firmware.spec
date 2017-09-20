@@ -1,5 +1,5 @@
 %global checkout b78acc9
-%global firmware_release 76
+%global firmware_release 77
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
@@ -13,6 +13,9 @@ Group:		System Environment/Kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
 URL:		http://www.kernel.org/
 Source0:	%{name}-%{version}.tar.gz
+Patch0:		0001-ath10k-QCA6174-hw3.0-update-firmware-6.bin-to-WLAN.R.patch
+Patch1:		0002-ath10k-QCA6174-hw3.0-update-board-2.bin.patch
+Patch2:		0003-Revert-ath10k-QCA988X-hw2.0-update-firmware-to-10.2..patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:	noarch
 Provides:	kernel-firmware = %{version} xorg-x11-drv-ati-firmware = 7.0
@@ -244,7 +247,7 @@ Firmware for Marvell Libertas SD 8787 Network Adapter
 
 %prep
 %setup -q -n linux-firmware-%{checkout}
-%if 0
+%if 1
 git init .
 if [ -z "$GIT_COMMITTER_NAME" ]; then
     git config user.email "nobody@fedoraproject.org"
@@ -252,6 +255,8 @@ if [ -z "$GIT_COMMITTER_NAME" ]; then
 fi
 git add .
 git commit -m init .
+
+git am %{patches}
 
 %endif
 
@@ -415,6 +420,9 @@ rm -rf $RPM_BUILD_ROOT
 %license WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Mon Sep 18 2017 Josh Boyer <jwboyer@fedoraproject.org> - 20170828-77.gitb78acc9
+- Add patches to fix ath10k regression (rhbz 1492161)
+
 * Mon Aug 28 2017 Josh Boyer <jwboyer@fedoraproject.org> - 20170828-76.gitb78acc9
 - Update to latest upstream snapshot
 - ath10k, iwlwifi, kabylake, liquidio, amdgpu, and cavium crypot updates
