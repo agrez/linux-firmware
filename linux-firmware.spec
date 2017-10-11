@@ -1,21 +1,19 @@
-%global checkout b78acc9
-%global firmware_release 77
+%global checkout bf04291
+%global firmware_release 78
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20170828
+Version:	20171009
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
 URL:		http://www.kernel.org/
 BuildArch:	noarch
 
-Source0:	%{name}-%{version}.tar.gz
-Patch0:		0001-ath10k-QCA6174-hw3.0-update-firmware-6.bin-to-WLAN.R.patch
-Patch1:		0002-ath10k-QCA6174-hw3.0-update-board-2.bin.patch
-Patch2:		0003-Revert-ath10k-QCA988X-hw2.0-update-firmware-to-10.2..patch
+# git archive --format=tar --prefix=linux-firmware-%{checkout}/ %{checkout}  | xz > linux-firmware-%{version}.tar.xz
+Source0:	%{name}-%{version}.tar.xz
 
 Provides:	kernel-firmware = %{version} xorg-x11-drv-ati-firmware = 7.0
 Obsoletes:	kernel-firmware < %{version} xorg-x11-drv-ati-firmware < 6.13.0-0.22
@@ -246,7 +244,7 @@ Firmware for Marvell Libertas SD 8787 Network Adapter
 
 %prep
 %setup -q -n linux-firmware-%{checkout}
-%if 1
+%if 0
 git init .
 if [ -z "$GIT_COMMITTER_NAME" ]; then
     git config user.email "nobody@fedoraproject.org"
@@ -396,6 +394,7 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 
 %changelog
 * Wed Oct 11 2017 Peter Robinson <pbrobinson@fedoraproject.org>
+- Updated cxgb4, WCom gpu, Intel OPA IB, amdgpu, rtlwifi
 - Ship the license in %%license for all sub packages
 - Modernise spec
 
