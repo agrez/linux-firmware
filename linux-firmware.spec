@@ -307,77 +307,77 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n iwl100-firmware
 %defattr(-,root,root,-)
-%doc WHENCE LICENCE.iwlwifi_firmware
+%license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-100-5.ucode
 
 %files -n iwl105-firmware
 %defattr(-,root,root,-)
-%doc WHENCE LICENCE.iwlwifi_firmware
+%license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-105-*.ucode
 
 %files -n iwl135-firmware
 %defattr(-,root,root,-)
-%doc WHENCE LICENCE.iwlwifi_firmware
+%license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-135-*.ucode
 
 %files -n iwl1000-firmware
 %defattr(-,root,root,-)
-%doc WHENCE LICENCE.iwlwifi_firmware
+%license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-1000-*.ucode
 
 %files -n iwl2000-firmware
 %defattr(-,root,root,-)
-%doc WHENCE LICENCE.iwlwifi_firmware
+%license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-2000-*.ucode
 
 %files -n iwl2030-firmware
 %defattr(-,root,root,-)
-%doc WHENCE LICENCE.iwlwifi_firmware
+%license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-2030-*.ucode
 
 %files -n iwl3945-firmware
 %defattr(-,root,root,-)
-%doc WHENCE LICENCE.iwlwifi_firmware
+%license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-3945-*.ucode
 
 %files -n iwl4965-firmware
 %defattr(-,root,root,-)
-%doc WHENCE LICENCE.iwlwifi_firmware
+%license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-4965-*.ucode
 
 %files -n iwl5000-firmware
 %defattr(-,root,root,-)
-%doc WHENCE LICENCE.iwlwifi_firmware
+%license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-5000-*.ucode
 
 %files -n iwl5150-firmware
 %defattr(-,root,root,-)
-%doc WHENCE LICENCE.iwlwifi_firmware
+%license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-5150-*.ucode
 
 %files -n iwl6000-firmware
 %defattr(-,root,root,-)
-%doc WHENCE LICENCE.iwlwifi_firmware
+%license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-6000-*.ucode
 
 %files -n iwl6000g2a-firmware
 %defattr(-,root,root,-)
-%doc WHENCE LICENCE.iwlwifi_firmware
+%license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-6000g2a-*.ucode
 
 %files -n iwl6000g2b-firmware
 %defattr(-,root,root,-)
-%doc WHENCE LICENCE.iwlwifi_firmware
+%license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-6000g2b-*.ucode
 
 %files -n iwl6050-firmware
 %defattr(-,root,root,-)
-%doc WHENCE LICENCE.iwlwifi_firmware
+%license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-6050-*.ucode
 
 %files -n iwl7260-firmware
 %defattr(-,root,root,-)
-%doc WHENCE LICENCE.iwlwifi_firmware
+%license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-7260-*.ucode
 %{_firmwarepath}/iwlwifi-7265-*.ucode
 %{_firmwarepath}/iwlwifi-7265D-*.ucode
@@ -386,31 +386,31 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n iwl3160-firmware
 %defattr(-,root,root,-)
-%doc WHENCE LICENCE.iwlwifi_firmware
+%license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-3160-*.ucode
 %{_firmwarepath}/iwlwifi-3168-*.ucode
 
 %files -n libertas-usb8388-firmware
 %defattr(-,root,root,-)
-%doc WHENCE LICENCE.Marvell
+%license WHENCE LICENCE.Marvell
 %dir %{_firmwarepath}/libertas
 %{_firmwarepath}/libertas/usb8388_v9.bin
 
 %files -n libertas-usb8388-olpc-firmware
 %defattr(-,root,root,-)
-%doc WHENCE LICENCE.Marvell
+%license WHENCE LICENCE.Marvell
 %dir %{_firmwarepath}/libertas
 %{_firmwarepath}/libertas/usb8388_olpc.bin
 
 %files -n libertas-sd8686-firmware
 %defattr(-,root,root,-)
-%doc WHENCE LICENCE.Marvell
+%license WHENCE LICENCE.Marvell
 %dir %{_firmwarepath}/libertas
 %{_firmwarepath}/libertas/sd8686*
 
 %files -n libertas-sd8787-firmware
 %defattr(-,root,root,-)
-%doc WHENCE LICENCE.Marvell
+%license WHENCE LICENCE.Marvell
 %dir %{_firmwarepath}/mrvl
 %{_firmwarepath}/mrvl/sd8787*
 
@@ -420,6 +420,9 @@ rm -rf $RPM_BUILD_ROOT
 %license WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Wed Oct 11 2017 Peter Robinson <pbrobinson@fedoraproject.org>
+- Ship the license in %%license for all sub packages
+
 * Mon Sep 18 2017 Josh Boyer <jwboyer@fedoraproject.org> - 20170828-77.gitb78acc9
 - Add patches to fix ath10k regression (rhbz 1492161)
 
