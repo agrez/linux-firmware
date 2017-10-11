@@ -8,16 +8,15 @@ Name:		linux-firmware
 Version:	20170828
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
-
-Group:		System Environment/Kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
 URL:		http://www.kernel.org/
+BuildArch:	noarch
+
 Source0:	%{name}-%{version}.tar.gz
 Patch0:		0001-ath10k-QCA6174-hw3.0-update-firmware-6.bin-to-WLAN.R.patch
 Patch1:		0002-ath10k-QCA6174-hw3.0-update-board-2.bin.patch
 Patch2:		0003-Revert-ath10k-QCA988X-hw2.0-update-firmware-to-10.2..patch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-BuildArch:	noarch
+
 Provides:	kernel-firmware = %{version} xorg-x11-drv-ati-firmware = 7.0
 Obsoletes:	kernel-firmware < %{version} xorg-x11-drv-ati-firmware < 6.13.0-0.22
 Obsoletes:	ueagle-atm4-firmware < 1.0-5
@@ -281,7 +280,6 @@ rm -f ctefx.bin ctspeq.bin
 rm -f check_whence.py
 
 %install
-rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT/%{_firmwarepath}
 mkdir -p $RPM_BUILD_ROOT/%{_firmwarepath}/updates
 cp -r * $RPM_BUILD_ROOT/%{_firmwarepath}
@@ -302,81 +300,64 @@ sed -i -e '/^iwlwifi/d' \
 sed -i -e 's!^!/usr/lib/firmware/!' linux-firmware.{files,dirs}
 sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %files -n iwl100-firmware
-%defattr(-,root,root,-)
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-100-5.ucode
 
 %files -n iwl105-firmware
-%defattr(-,root,root,-)
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-105-*.ucode
 
 %files -n iwl135-firmware
-%defattr(-,root,root,-)
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-135-*.ucode
 
 %files -n iwl1000-firmware
-%defattr(-,root,root,-)
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-1000-*.ucode
 
 %files -n iwl2000-firmware
-%defattr(-,root,root,-)
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-2000-*.ucode
 
 %files -n iwl2030-firmware
-%defattr(-,root,root,-)
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-2030-*.ucode
 
 %files -n iwl3945-firmware
-%defattr(-,root,root,-)
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-3945-*.ucode
 
 %files -n iwl4965-firmware
-%defattr(-,root,root,-)
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-4965-*.ucode
 
 %files -n iwl5000-firmware
-%defattr(-,root,root,-)
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-5000-*.ucode
 
 %files -n iwl5150-firmware
-%defattr(-,root,root,-)
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-5150-*.ucode
 
 %files -n iwl6000-firmware
-%defattr(-,root,root,-)
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-6000-*.ucode
 
 %files -n iwl6000g2a-firmware
-%defattr(-,root,root,-)
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-6000g2a-*.ucode
 
 %files -n iwl6000g2b-firmware
-%defattr(-,root,root,-)
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-6000g2b-*.ucode
 
 %files -n iwl6050-firmware
-%defattr(-,root,root,-)
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-6050-*.ucode
 
 %files -n iwl7260-firmware
-%defattr(-,root,root,-)
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-7260-*.ucode
 %{_firmwarepath}/iwlwifi-7265-*.ucode
@@ -385,43 +366,38 @@ rm -rf $RPM_BUILD_ROOT
 %{_firmwarepath}/iwlwifi-8265-*.ucode
 
 %files -n iwl3160-firmware
-%defattr(-,root,root,-)
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-3160-*.ucode
 %{_firmwarepath}/iwlwifi-3168-*.ucode
 
 %files -n libertas-usb8388-firmware
-%defattr(-,root,root,-)
 %license WHENCE LICENCE.Marvell
 %dir %{_firmwarepath}/libertas
 %{_firmwarepath}/libertas/usb8388_v9.bin
 
 %files -n libertas-usb8388-olpc-firmware
-%defattr(-,root,root,-)
 %license WHENCE LICENCE.Marvell
 %dir %{_firmwarepath}/libertas
 %{_firmwarepath}/libertas/usb8388_olpc.bin
 
 %files -n libertas-sd8686-firmware
-%defattr(-,root,root,-)
 %license WHENCE LICENCE.Marvell
 %dir %{_firmwarepath}/libertas
 %{_firmwarepath}/libertas/sd8686*
 
 %files -n libertas-sd8787-firmware
-%defattr(-,root,root,-)
 %license WHENCE LICENCE.Marvell
 %dir %{_firmwarepath}/mrvl
 %{_firmwarepath}/mrvl/sd8787*
 
 %files -f linux-firmware.files
-%defattr(-,root,root,-)
 %dir %{_firmwarepath}
 %license WHENCE LICENCE.* LICENSE.*
 
 %changelog
 * Wed Oct 11 2017 Peter Robinson <pbrobinson@fedoraproject.org>
 - Ship the license in %%license for all sub packages
+- Modernise spec
 
 * Mon Sep 18 2017 Josh Boyer <jwboyer@fedoraproject.org> - 20170828-77.gitb78acc9
 - Add patches to fix ath10k regression (rhbz 1492161)
