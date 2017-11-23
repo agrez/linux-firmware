@@ -1,11 +1,11 @@
-%global checkout bf04291
-%global firmware_release 78
+%global checkout 90436ce
+%global firmware_release 79
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20171009
+Version:	20171123
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
@@ -104,6 +104,17 @@ for Linux to support the iwl2030 hardware.  Usage of the firmware
 is subject to the terms and conditions contained inside the provided
 LICENSE file. Please read it carefully.
 
+%package -n iwl3160-firmware
+Summary:	Firmware for Intel(R) Wireless WiFi Link 3160 Series Adapters
+License:	Redistributable, no modification permitted
+Epoch:		1
+Version:	25.30.13.0
+Release:	%{firmware_release}%{?dist}
+%description -n iwl3160-firmware
+This package contains the firmware required by the Intel wireless drivers
+for Linux.  Usage of the firmware is subject to the terms and conditions
+contained inside the provided LICENSE file. Please read it carefully.
+
 %package -n iwl3945-firmware
 Summary:	Firmware for Intel® PRO/Wireless 3945 A/B/G network adaptors
 License:	Redistributable, no modification permitted
@@ -193,23 +204,12 @@ for Linux.  Usage of the firmware is subject to the terms and conditions
 contained inside the provided LICENSE file. Please read it carefully.
 
 %package -n iwl7260-firmware
-Summary:	Firmware for Intel(R) Wireless WiFi Link 7260 Series Adapters
+Summary:	Firmware for Intel(R) Wireless WiFi Link 726x/8000/9000 Series Adapters
 License:	Redistributable, no modification permitted
 Epoch:		1
 Version:	25.30.13.0
 Release:	%{firmware_release}%{?dist}
 %description -n iwl7260-firmware
-This package contains the firmware required by the Intel wireless drivers
-for Linux.  Usage of the firmware is subject to the terms and conditions
-contained inside the provided LICENSE file. Please read it carefully.
-
-%package -n iwl3160-firmware
-Summary:	Firmware for Intel(R) Wireless WiFi Link 3160 Series Adapters
-License:	Redistributable, no modification permitted
-Epoch:		1
-Version:	25.30.13.0
-Release:	%{firmware_release}%{?dist}
-%description -n iwl3160-firmware
 This package contains the firmware required by the Intel wireless drivers
 for Linux.  Usage of the firmware is subject to the terms and conditions
 contained inside the provided LICENSE file. Please read it carefully.
@@ -323,6 +323,11 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-2030-*.ucode
 
+%files -n iwl3160-firmware
+%license WHENCE LICENCE.iwlwifi_firmware
+%{_firmwarepath}/iwlwifi-3160-*.ucode
+%{_firmwarepath}/iwlwifi-3168-*.ucode
+
 %files -n iwl3945-firmware
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-3945-*.ucode
@@ -362,11 +367,8 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %{_firmwarepath}/iwlwifi-7265D-*.ucode
 %{_firmwarepath}/iwlwifi-8000C-*.ucode
 %{_firmwarepath}/iwlwifi-8265-*.ucode
-
-%files -n iwl3160-firmware
-%license WHENCE LICENCE.iwlwifi_firmware
-%{_firmwarepath}/iwlwifi-3160-*.ucode
-%{_firmwarepath}/iwlwifi-3168-*.ucode
+%{_firmwarepath}/iwlwifi-9000-*.ucode
+%{_firmwarepath}/iwlwifi-9260-*.ucode
 
 %files -n libertas-usb8388-firmware
 %license WHENCE LICENCE.Marvell
@@ -393,8 +395,12 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %license WHENCE LICENCE.* LICENSE.*
 
 %changelog
-* Wed Oct 11 2017 Peter Robinson <pbrobinson@fedoraproject.org>
-- Updated cxgb4, WCom gpu, Intel OPA IB, amdgpu, rtlwifi
+* Thu Nov 23 2017 Peter Robinson <pbrobinson@fedoraproject.org> 20171123-79.git90436ce
+- Updated Intel GPU, amdgpu, iwlwifi, mvebu wifi, liquidio, QCom a530 & Venus, mlxsw, qed
+- Add iwlwifi 9000 series
+
+* Wed Oct 11 2017 Peter Robinson <pbrobinson@fedoraproject.org> 20171009-78.gitbf04291
+- Updated cxgb4, QCom gpu, Intel OPA IB, amdgpu, rtlwifi
 - Ship the license in %%license for all sub packages
 - Modernise spec
 
