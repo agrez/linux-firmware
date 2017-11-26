@@ -1,11 +1,11 @@
-%global checkout 90436ce
-%global firmware_release 79
+%global checkout 17e62881
+%global firmware_release 80
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20171123
+Version:	20171126
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
@@ -395,6 +395,10 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %license WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Sun Nov 26 2017 Josh Boyer <jwboyer@fedoraproject.org> 20171126-80.git17e62881
+- Updated bcm 4339 4354 4356 4358 firmware, new bcm 43430
+- Fixes CVE-2016-0801 CVE-2017-0561 CVE-2017-9417
+
 * Thu Nov 23 2017 Peter Robinson <pbrobinson@fedoraproject.org> 20171123-79.git90436ce
 - Updated Intel GPU, amdgpu, iwlwifi, mvebu wifi, liquidio, QCom a530 & Venus, mlxsw, qed
 - Add iwlwifi 9000 series
