@@ -1,11 +1,11 @@
-%global checkout 17e62881
-%global firmware_release 80
+%global checkout 2451bb22
+%global firmware_release 81
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20171126
+Version:	20171215
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
@@ -395,6 +395,10 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %license WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Fri Dec 15 2017 Josh Boyer <jwboyer@fedoraproject.org> 20171215-81.git2451bb22
+- Updated skl DMC, cnl audio, netronome SmartNIC, amdgpu vega10 and raven,
+  intel bluetooth, brcm CYW4373, and liquidio vswitch firmwares
+
 * Sun Nov 26 2017 Josh Boyer <jwboyer@fedoraproject.org> 20171126-80.git17e62881
 - Updated bcm 4339 4354 4356 4358 firmware, new bcm 43430
 - Fixes CVE-2016-0801 CVE-2017-0561 CVE-2017-9417
