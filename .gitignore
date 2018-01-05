@@ -1,3 +1,4 @@
 /linux-firmware-*.tar.gz
 /linux-firmware-*.tar.bz2
 /linux-firmware-*.tar.xz
+/microcode_amd_fam17h.bin

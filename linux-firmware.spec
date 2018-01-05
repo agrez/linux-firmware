@@ -1,5 +1,5 @@
 %global checkout 2451bb22
-%global firmware_release 81
+%global firmware_release 82
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
@@ -14,6 +14,7 @@ BuildArch:	noarch
 
 # git archive --format=tar --prefix=linux-firmware-%{checkout}/ %{checkout}  | xz > linux-firmware-%{version}.tar.xz
 Source0:	%{name}-%{version}.tar.xz
+Source1:	microcode_amd_fam17h.bin
 
 Provides:	kernel-firmware = %{version} xorg-x11-drv-ati-firmware = 7.0
 Obsoletes:	kernel-firmware < %{version} xorg-x11-drv-ati-firmware < 6.13.0-0.22
@@ -277,6 +278,8 @@ rm -f ctefx.bin ctspeq.bin
 # Remove the check_whence.py file
 rm -f check_whence.py
 
+install %{SOURCE1} amd-ucode/
+
 %install
 mkdir -p $RPM_BUILD_ROOT/%{_firmwarepath}
 mkdir -p $RPM_BUILD_ROOT/%{_firmwarepath}/updates
@@ -395,6 +398,9 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %license WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Fri Jan 05 2018 Josh Boyer <jwboyer@fedoraproject.org> 20171215-92.git2451bb22
+- Add amd-ucode for fam17h
+
 * Fri Dec 15 2017 Josh Boyer <jwboyer@fedoraproject.org> 20171215-81.git2451bb22
 - Updated skl DMC, cnl audio, netronome SmartNIC, amdgpu vega10 and raven,
   intel bluetooth, brcm CYW4373, and liquidio vswitch firmwares
