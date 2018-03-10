@@ -1,5 +1,5 @@
 %global checkout 2451bb22
-%global firmware_release 82
+%global firmware_release 83
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
@@ -13,8 +13,8 @@ URL:		http://www.kernel.org/
 BuildArch:	noarch
 
 # git archive --format=tar --prefix=linux-firmware-%{checkout}/ %{checkout}  | xz > linux-firmware-%{version}.tar.xz
-Source0:	%{name}-%{version}.tar.xz
-Source1:	microcode_amd_fam17h.bin
+Source0:	http://pkgs.fedoraproject.org/repo/pkgs/linux-firmware/%{name}-%{version}.tar.xz/sha512/5fa408faf97e384c94f62a0e61d54b946589704ee91bfc95e198f0c3761fffb9dc33407775b77e996d78b66976f09530150e479b2d5083b0d8252ad4c4e97aea/linux-firmware-%{version}.tar.xz
+Source1:	http://pkgs.fedoraproject.org/repo/pkgs/linux-firmware/microcode_amd_fam17h.bin/sha512/5b75f1096082a643539a5005a82c87e429868aad80ea15b4f97b5d139950181569624367048cb88f8dcf66c3f042f8209143567404fe4d168be73d5eb9c741cf/microcode_amd_fam17h.bin
 
 Provides:	kernel-firmware = %{version} xorg-x11-drv-ati-firmware = 7.0
 Obsoletes:	kernel-firmware < %{version} xorg-x11-drv-ati-firmware < 6.13.0-0.22
@@ -271,6 +271,7 @@ rm -rf carl9170fw
 # which are preferred and support the same (or more) hardware
 rm -f libertas/sd8686_v8*
 rm -f libertas/usb8388_v5.bin
+rm -f brcm/brcmfmac43430-sdio.bin
 
 # Remove firmware for Creative CA0132 HD as it's in alsa-firmware
 rm -f ctefx.bin ctspeq.bin
@@ -398,6 +399,9 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %license WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Thu Mar 08 2018 Vaughan <devel at agrez dot net> - 20171215-83.git2451bb22
+- Remove brcmfmac43430-sdio.bin (Fedberry provides an updated release)
+
 * Fri Jan 05 2018 Josh Boyer <jwboyer@fedoraproject.org> 20171215-92.git2451bb22
 - Add amd-ucode for fam17h
 
