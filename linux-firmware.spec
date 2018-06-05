@@ -1,20 +1,20 @@
-%global checkout 2451bb22
-%global firmware_release 84
+%global checkout 7518922b
+%global firmware_release 86
+%global sha512 d39474a34b0ea8ee856ee0185d06fb15b26c657b79999502916a689ebe953c5b347cbc533f8d55489bd482358dcaa6321e88ab60a97e71da9a6f5a0ac82bb58e
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20171215
+Version:	20180525
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
 URL:		http://www.kernel.org/
 BuildArch:	noarch
 
-# git archive --format=tar --prefix=linux-firmware-%{checkout}/ %{checkout}  | xz > linux-firmware-%{version}.tar.xz
-Source0:	http://src.fedoraproject.org/repo/pkgs/linux-firmware/%{name}-%{version}.tar.xz/sha512/5fa408faf97e384c94f62a0e61d54b946589704ee91bfc95e198f0c3761fffb9dc33407775b77e996d78b66976f09530150e479b2d5083b0d8252ad4c4e97aea/linux-firmware-%{version}.tar.xz
-Source1:	http://src.fedoraproject.org/repo/pkgs/linux-firmware/microcode_amd_fam17h.bin/sha512/5b75f1096082a643539a5005a82c87e429868aad80ea15b4f97b5d139950181569624367048cb88f8dcf66c3f042f8209143567404fe4d168be73d5eb9c741cf/microcode_amd_fam17h.bin
+# git archive --format=tar --prefix=linux-firmware-%%{checkout}/ %%{checkout}  | xz > linux-firmware-%%{version}.tar.xz
+Source0:	http://src.fedoraproject.org/repo/pkgs/linux-firmware/%{name}-%{version}.tar.xz/sha512/%{sha512}/linux-firmware-%{version}.tar.xz
 
 Provides:	kernel-firmware = %{version} xorg-x11-drv-ati-firmware = 7.0
 Obsoletes:	kernel-firmware < %{version} xorg-x11-drv-ati-firmware < 6.13.0-0.22
@@ -218,7 +218,7 @@ contained inside the provided LICENSE file. Please read it carefully.
 %package -n libertas-usb8388-firmware
 Summary:	Firmware for Marvell Libertas USB 8388 Network Adapter
 License:	Redistributable, no modification permitted
-Epoch:		2 
+Epoch:		2
 Obsoletes:	libertas-usb8388-firmware < 2:5.110.22.p23-8
 %description -n libertas-usb8388-firmware
 Firmware for Marvell Libertas USB 8388 Network Adapter
@@ -280,7 +280,6 @@ rm -f ctefx.bin ctspeq.bin
 # Remove the check_whence.py file
 rm -f check_whence.py
 
-install %{SOURCE1} amd-ucode/
 
 %install
 mkdir -p $RPM_BUILD_ROOT/%{_firmwarepath}
@@ -400,6 +399,11 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %license WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Mon Jun 04 2018 Vaughan <devel at agrez dot net> - 20180525-86.git7518922b
+- New upstream snapshot
+- Drop SOURCE2 (not needed for RPI's)
+- Bump release
+
 * Mon Mar 19 2018 Vaughan <devel at agrez dot net> - 20171215-84.git2451bb22
 - Remove brcmfmac43455-sdio.bin (Fedberry provides an updated release)
 - Fix urls for Sources
@@ -464,7 +468,7 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 * Fri Sep 23 2016 Josh Boyer <jwboyer@fedoraproject.org> 20160923-68.git42ad5367
 - Update to the latest upstream snapshot
 - ath10k, amdgpu, mediatek, brcm, marvell updates
- 
+
 * Tue Aug 16 2016 Josh Boyer <jwboyer@fedoraproject.org> 20160816-67.git7c3dfc0b
 - Update to the latest upstream snapshot (rhbz 1367203)
 - Intel audio, rockchip, amdgpu, iwlwifi, nvidia pascal updates
@@ -653,8 +657,8 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 
 * Mon Feb 04 2013 Josh Boyer <jwboyer@redhat.com> - 20130201-0.3.git65a5163
 - Obsolete ql2[45]00-firmware packages (rhbz 906898)
- 
-* Fri Feb 01 2013 Josh Boyer <jwboyer@redhat.com> 
+
+* Fri Feb 01 2013 Josh Boyer <jwboyer@redhat.com>
 - Update to latest upstream release
 - Provide firmware for carl9170 (rhbz 866051)
 
