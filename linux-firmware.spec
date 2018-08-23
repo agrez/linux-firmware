@@ -1,12 +1,12 @@
-%global checkout 7518922b
-%global firmware_release 86
-%global sha512 d39474a34b0ea8ee856ee0185d06fb15b26c657b79999502916a689ebe953c5b347cbc533f8d55489bd482358dcaa6321e88ab60a97e71da9a6f5a0ac82bb58e
+%global checkout f1b95fe5
+%global firmware_release 87
+%global sha512 77589410f71761bc4a27cfe6a3679275e227c3db7ff30468d24c146d5f628b4869fe5b8e058b57fd331ec19e1105a8cef9c28a4edad22fa16f7d48ea1c4b2608
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20180525
+Version:	20180815
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
@@ -399,6 +399,10 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %license WHENCE LICENCE.* LICENSE.*
 
 %changelog
+* Thu Aug 23 2018 Vaughan <devel at agrez dot net> - 20180815-87.gitf1b95fe5
+- New upstream snapshot
+- Bump release
+
 * Mon Jun 04 2018 Vaughan <devel at agrez dot net> - 20180525-86.git7518922b
 - New upstream snapshot
 - Drop SOURCE2 (not needed for RPI's)
