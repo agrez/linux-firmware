@@ -30,8 +30,6 @@ Obsoletes:	rt73usb-firmware < 1.8-11
 Obsoletes:	cx18-firmware < 20080628-10
 Conflicts:	microcode_ctl < 2.1-0
 
-BuildRequires: git
-
 %description
 This package includes firmware files required for some devices to
 operate.
@@ -244,19 +242,8 @@ License:	Redistributable, no modification permitted
 Firmware for Marvell Libertas SD 8787 Network Adapter
 
 %prep
-%setup -q -n linux-firmware-%{checkout}
-%if 0
-git init .
-if [ -z "$GIT_COMMITTER_NAME" ]; then
-    git config user.email "nobody@fedoraproject.org"
-    git config user.name "Fedora linux-firmware packagers"
-fi
-git add .
-git commit -m init .
+%autosetup -p1 -n linux-firmware-%{checkout}
 
-git am %{patches}
-
-%endif
 
 %build
 # Remove firmware shipped in separate packages already
@@ -282,14 +269,14 @@ rm -f check_whence.py
 
 
 %install
-mkdir -p $RPM_BUILD_ROOT/%{_firmwarepath}
-mkdir -p $RPM_BUILD_ROOT/%{_firmwarepath}/updates
-cp -r * $RPM_BUILD_ROOT/%{_firmwarepath}
-rm $RPM_BUILD_ROOT/%{_firmwarepath}/{WHENCE,LICENCE.*,LICENSE.*}
+mkdir -p %{buildroot}/%{_firmwarepath}
+mkdir -p %{buildroot}/%{_firmwarepath}/updates
+cp -r * %{buildroot}/%{_firmwarepath}
+rm %{buildroot}/%{_firmwarepath}/{WHENCE,LICENCE.*,LICENSE.*}
 
 # Create file list but exclude firmwares that we place in subpackages
 FILEDIR=`pwd`
-pushd $RPM_BUILD_ROOT/%{_firmwarepath}
+pushd %{buildroot}/%{_firmwarepath}
 find . \! -type d > $FILEDIR/linux-firmware.files
 find . -type d | sed -e '/^.$/d' > $FILEDIR/linux-firmware.dirs
 popd
