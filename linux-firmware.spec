@@ -1,12 +1,12 @@
-%global checkout 44d4fca9
-%global firmware_release 88
-%global sha512 9e97b17ba5fab6f75252092d03d9f859d9426f8271ed2133ebf8ce3da44c1b7ad8ea52ce134f7d4e3a054adca438e3c3357e9d7ab98c944dd53249e06d8101b9
+%global checkout c6b6265d
+%global firmware_release 89
+%global sha512 f1ad584870cac242bac3990e4f57fd0127c32b52e05dd30efc5e9f975fb6a7cafff7aee6d09fb0f403ef979ed51b1e1021483061252b6441e2bd7476201d8cfa
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20180913
+Version:	20181008
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
@@ -386,7 +386,11 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %license WHENCE LICENCE.* LICENSE.*
 
 %changelog
-* Thu Oct 11 2018 Vaughan <devel at agrez dot net> - 20181011-88.git44d4fca9
+* Mon Nov 12 2018 Vaughan <devel at agrez dot net> - 20181011-89.git44d4fca9
+- New upstream snapshot
+- Bump release
+
+* Thu Oct 11 2018 Vaughan <devel at agrez dot net> - 20180913-88.git44d4fca9
 - New upstream snapshot
 - Bump release
 
