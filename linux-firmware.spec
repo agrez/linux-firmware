@@ -16,6 +16,7 @@ BuildArch:	noarch
 # git archive --format=tar --prefix=linux-firmware-%%{checkout}/ %%{checkout}  | xz > linux-firmware-%%{version}.tar.xz
 Source0:	http://src.fedoraproject.org/repo/pkgs/linux-firmware/%{name}-%{version}.tar.xz/sha512/%{sha512}/linux-firmware-%{version}.tar.xz
 
+Requires:	linux-firmware-whence
 Provides:	kernel-firmware = %{version} xorg-x11-drv-ati-firmware = 7.0
 Obsoletes:	kernel-firmware < %{version} xorg-x11-drv-ati-firmware < 6.13.0-0.22
 Obsoletes:	ueagle-atm4-firmware < 1.0-5
@@ -34,11 +35,18 @@ Conflicts:	microcode_ctl < 2.1-0
 This package includes firmware files required for some devices to
 operate.
 
+%package whence
+Summary:	WHENCE License file
+License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
+%description whence
+This package contains the WHENCE license file which documents the vendor license details.
+
 %package -n iwl100-firmware
 Summary:	Firmware for Intel(R) Wireless WiFi Link 100 Series Adapters
 License:	Redistributable, no modification permitted
 Version:	39.31.5.1
 Release:	%{firmware_release}%{?dist}
+Requires:	linux-firmware-whence
 Obsoletes:	iwl100-firmware < 39.31.5.1-4
 %description -n iwl100-firmware
 This package contains the firmware required by the Intel wireless drivers
@@ -51,6 +59,7 @@ Summary:	Firmware for Intel(R) Centrino Wireless-N 105 Series Adapters
 License:	Redistributable, no modification permitted
 Version:	18.168.6.1
 Release:	%{firmware_release}%{?dist}
+Requires:	linux-firmware-whence
 %description -n iwl105-firmware
 This package contains the firmware required by the Intel wireless drivers
 for Linux to support the iwl105 hardware.  Usage of the firmware
@@ -62,6 +71,7 @@ Summary:	Firmware for Intel(R) Centrino Wireless-N 135 Series Adapters
 License:	Redistributable, no modification permitted
 Version:	18.168.6.1
 Release:	%{firmware_release}%{?dist}
+Requires:	linux-firmware-whence
 %description -n iwl135-firmware
 This package contains the firmware required by the Intel wireless drivers
 for Linux to support the iwl135 hardware.  Usage of the firmware
@@ -74,6 +84,7 @@ License:	Redistributable, no modification permitted
 Version:	39.31.5.1
 Epoch:		1
 Release:	%{firmware_release}%{?dist}
+Requires:	linux-firmware-whence
 Obsoletes:	iwl1000-firmware < 1:39.31.5.1-3
 %description -n iwl1000-firmware
 This package contains the firmware required by the Intel wireless drivers
@@ -86,6 +97,7 @@ Summary:	Firmware for Intel(R) Centrino Wireless-N 2000 Series Adapters
 License:	Redistributable, no modification permitted
 Version:	18.168.6.1
 Release:	%{firmware_release}%{?dist}
+Requires:	linux-firmware-whence
 %description -n iwl2000-firmware
 This package contains the firmware required by the Intel wireless drivers
 for Linux to support the iwl2000 hardware.  Usage of the firmware
@@ -97,6 +109,7 @@ Summary:	Firmware for Intel(R) Centrino Wireless-N 2030 Series Adapters
 License:	Redistributable, no modification permitted
 Version:	18.168.6.1
 Release:	%{firmware_release}%{?dist}
+Requires:	linux-firmware-whence
 %description -n iwl2030-firmware
 This package contains the firmware required by the Intel wireless drivers
 for Linux to support the iwl2030 hardware.  Usage of the firmware
@@ -109,6 +122,7 @@ License:	Redistributable, no modification permitted
 Epoch:		1
 Version:	25.30.13.0
 Release:	%{firmware_release}%{?dist}
+Requires:	linux-firmware-whence
 %description -n iwl3160-firmware
 This package contains the firmware required by the Intel wireless drivers
 for Linux.  Usage of the firmware is subject to the terms and conditions
@@ -119,6 +133,7 @@ Summary:	Firmware for Intel® PRO/Wireless 3945 A/B/G network adaptors
 License:	Redistributable, no modification permitted
 Version:	15.32.2.9
 Release:	%{firmware_release}%{?dist}
+Requires:	linux-firmware-whence
 Obsoletes:	iwl3945-firmware < 15.32.2.9-7
 %description -n iwl3945-firmware
 This package contains the firmware required by the iwl3945 driver
@@ -130,6 +145,7 @@ Summary:	Firmware for Intel® PRO/Wireless 4965 A/G/N network adaptors
 License:	Redistributable, no modification permitted
 Version:	228.61.2.24
 Release:	%{firmware_release}%{?dist}
+Requires:	linux-firmware-whence
 Obsoletes:	iwl4965-firmware < 228.61.2.24-5
 %description -n iwl4965-firmware
 This package contains the firmware required by the iwl4965 driver
@@ -141,6 +157,7 @@ Summary:	Firmware for Intel® PRO/Wireless 5000 A/G/N network adaptors
 License:	Redistributable, no modification permitted
 Version:	8.83.5.1_1
 Release:	%{firmware_release}%{?dist}
+Requires:	linux-firmware-whence
 Obsoletes:	iwl5000-firmware < 8.83.5.1_1-3
 %description -n iwl5000-firmware
 This package contains the firmware required by the iwl5000 driver
@@ -152,6 +169,7 @@ Summary:	Firmware for Intel® PRO/Wireless 5150 A/G/N network adaptors
 License:	Redistributable, no modification permitted
 Version:	8.24.2.2
 Release:	%{firmware_release}%{?dist}
+Requires:	linux-firmware-whence
 Obsoletes:	iwl5150-firmware < 8.24.2.2-4
 %description -n iwl5150-firmware
 This package contains the firmware required by the iwl5150 driver
@@ -163,6 +181,7 @@ Summary:	Firmware for Intel(R) Wireless WiFi Link 6000 AGN Adapter
 License:	Redistributable, no modification permitted
 Version:	9.221.4.1
 Release:	%{firmware_release}%{?dist}
+Requires:	linux-firmware-whence
 Obsoletes:	iwl6000-firmware < 9.221.4.1-4
 %description -n iwl6000-firmware
 This package contains the firmware required by the Intel wireless drivers
@@ -174,6 +193,7 @@ Summary:	Firmware for Intel(R) Wireless WiFi Link 6005 Series Adapters
 License:	Redistributable, no modification permitted
 Version:	18.168.6.1
 Release:	%{firmware_release}%{?dist}
+Requires:	linux-firmware-whence
 Obsoletes:	iwl6000g2a-firmware < 17.168.5.3-3
 %description -n iwl6000g2a-firmware
 This package contains the firmware required by the Intel wireless drivers
@@ -185,6 +205,7 @@ Summary:	Firmware for Intel(R) Wireless WiFi Link 6030 Series Adapters
 License:	Redistributable, no modification permitted
 Version:	18.168.6.1
 Release:	%{firmware_release}%{?dist}
+Requires:	linux-firmware-whence
 Obsoletes:	iwl6000g2b-firmware < 17.168.5.2-3
 %description -n iwl6000g2b-firmware
 This package contains the firmware required by the Intel wireless drivers
@@ -196,6 +217,7 @@ Summary:	Firmware for Intel(R) Wireless WiFi Link 6050 Series Adapters
 License:	Redistributable, no modification permitted
 Version:	41.28.5.1
 Release:	%{firmware_release}%{?dist}
+Requires:	linux-firmware-whence
 Obsoletes:	iwl6050-firmware < 41.28.5.1-5
 %description -n iwl6050-firmware
 This package contains the firmware required by the Intel wireless drivers
@@ -208,6 +230,7 @@ License:	Redistributable, no modification permitted
 Epoch:		1
 Version:	25.30.13.0
 Release:	%{firmware_release}%{?dist}
+Requires:	linux-firmware-whence
 %description -n iwl7260-firmware
 This package contains the firmware required by the Intel wireless drivers
 for Linux.  Usage of the firmware is subject to the terms and conditions
@@ -217,6 +240,7 @@ contained inside the provided LICENSE file. Please read it carefully.
 Summary:	Firmware for Marvell Libertas USB 8388 Network Adapter
 License:	Redistributable, no modification permitted
 Epoch:		2
+Requires:	linux-firmware-whence
 Obsoletes:	libertas-usb8388-firmware < 2:5.110.22.p23-8
 %description -n libertas-usb8388-firmware
 Firmware for Marvell Libertas USB 8388 Network Adapter
@@ -224,6 +248,7 @@ Firmware for Marvell Libertas USB 8388 Network Adapter
 %package -n libertas-usb8388-olpc-firmware
 Summary:	OLPC firmware for Marvell Libertas USB 8388 Network Adapter
 License:	Redistributable, no modification permitted
+Requires:	linux-firmware-whence
 %description -n libertas-usb8388-olpc-firmware
 Firmware for Marvell Libertas USB 8388 Network Adapter with OLPC mesh network
 support.
@@ -231,6 +256,7 @@ support.
 %package -n libertas-sd8686-firmware
 Summary:	Firmware for Marvell Libertas SD 8686 Network Adapter
 License:	Redistributable, no modification permitted
+Requires:	linux-firmware-whence
 Obsoletes:	libertas-sd8686-firmware < 9.70.20.p0-4
 %description -n libertas-sd8686-firmware
 Firmware for Marvell Libertas SD 8686 Network Adapter
@@ -238,8 +264,23 @@ Firmware for Marvell Libertas SD 8686 Network Adapter
 %package -n libertas-sd8787-firmware
 Summary:	Firmware for Marvell Libertas SD 8787 Network Adapter
 License:	Redistributable, no modification permitted
+Requires:	linux-firmware-whence
 %description -n libertas-sd8787-firmware
 Firmware for Marvell Libertas SD 8787 Network Adapter
+
+%package -n liquidio-firmware
+Summary:	Firmware for Cavium LiquidIO Intelligent Server Adapter
+License:	Redistributable, no modification permitted
+Requires:	linux-firmware-whence
+%description -n liquidio-firmware
+Firmware for Cavium LiquidIO Intelligent Server Adapter
+
+%package -n netronome-firmware
+Summary:	Firmware for Netronome Smart NICs
+License:	Redistributable, no modification permitted
+Requires:	linux-firmware-whence
+%description -n netronome-firmware
+Firmware for Netronome Smart NICs
 
 %prep
 %autosetup -p1 -n linux-firmware-%{checkout}
@@ -285,74 +326,80 @@ sed -i -e '/^iwlwifi/d' \
 	-i -e '/^libertas\/sd8686/d' \
 	-i -e '/^libertas\/usb8388/d' \
 	-i -e '/^mrvl\/sd8787/d' \
+	-i -e '/^liquidio/d' \
+	-i -e '/^netronome/d' \
 	linux-firmware.files
 sed -i -e 's!^!/usr/lib/firmware/!' linux-firmware.{files,dirs}
+sed -i -e 's/^/"/;s/$/"/' linux-firmware.files
 sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 
 
+%files whence
+%license WHENCE
+
 %files -n iwl100-firmware
-%license WHENCE LICENCE.iwlwifi_firmware
+%license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-100-5.ucode
 
 %files -n iwl105-firmware
-%license WHENCE LICENCE.iwlwifi_firmware
+%license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-105-*.ucode
 
 %files -n iwl135-firmware
-%license WHENCE LICENCE.iwlwifi_firmware
+%license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-135-*.ucode
 
 %files -n iwl1000-firmware
-%license WHENCE LICENCE.iwlwifi_firmware
+%license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-1000-*.ucode
 
 %files -n iwl2000-firmware
-%license WHENCE LICENCE.iwlwifi_firmware
+%license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-2000-*.ucode
 
 %files -n iwl2030-firmware
-%license WHENCE LICENCE.iwlwifi_firmware
+%license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-2030-*.ucode
 
 %files -n iwl3160-firmware
-%license WHENCE LICENCE.iwlwifi_firmware
+%license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-3160-*.ucode
 %{_firmwarepath}/iwlwifi-3168-*.ucode
 
 %files -n iwl3945-firmware
-%license WHENCE LICENCE.iwlwifi_firmware
+%license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-3945-*.ucode
 
 %files -n iwl4965-firmware
-%license WHENCE LICENCE.iwlwifi_firmware
+%license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-4965-*.ucode
 
 %files -n iwl5000-firmware
-%license WHENCE LICENCE.iwlwifi_firmware
+%license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-5000-*.ucode
 
 %files -n iwl5150-firmware
-%license WHENCE LICENCE.iwlwifi_firmware
+%license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-5150-*.ucode
 
 %files -n iwl6000-firmware
-%license WHENCE LICENCE.iwlwifi_firmware
+%license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-6000-*.ucode
 
 %files -n iwl6000g2a-firmware
-%license WHENCE LICENCE.iwlwifi_firmware
+%license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-6000g2a-*.ucode
 
 %files -n iwl6000g2b-firmware
-%license WHENCE LICENCE.iwlwifi_firmware
+%license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-6000g2b-*.ucode
 
 %files -n iwl6050-firmware
-%license WHENCE LICENCE.iwlwifi_firmware
+%license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-6050-*.ucode
 
 %files -n iwl7260-firmware
-%license WHENCE LICENCE.iwlwifi_firmware
+%license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-7260-*.ucode
 %{_firmwarepath}/iwlwifi-7265-*.ucode
 %{_firmwarepath}/iwlwifi-7265D-*.ucode
@@ -362,28 +409,38 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %{_firmwarepath}/iwlwifi-9260-*.ucode
 
 %files -n libertas-usb8388-firmware
-%license WHENCE LICENCE.Marvell
+%license LICENCE.Marvell
 %dir %{_firmwarepath}/libertas
 %{_firmwarepath}/libertas/usb8388_v9.bin
 
 %files -n libertas-usb8388-olpc-firmware
-%license WHENCE LICENCE.Marvell
+%license LICENCE.Marvell
 %dir %{_firmwarepath}/libertas
 %{_firmwarepath}/libertas/usb8388_olpc.bin
 
 %files -n libertas-sd8686-firmware
-%license WHENCE LICENCE.Marvell
+%license LICENCE.Marvell
 %dir %{_firmwarepath}/libertas
 %{_firmwarepath}/libertas/sd8686*
 
 %files -n libertas-sd8787-firmware
-%license WHENCE LICENCE.Marvell
+%license LICENCE.Marvell
 %dir %{_firmwarepath}/mrvl
 %{_firmwarepath}/mrvl/sd8787*
 
 %files -f linux-firmware.files
 %dir %{_firmwarepath}
-%license WHENCE LICENCE.* LICENSE.*
+%license LICENCE.* LICENSE.*
+
+%files -n liquidio-firmware
+%license LICENCE.cavium_liquidio
+%dir %{_firmwarepath}/liquidio
+%{_firmwarepath}/liquidio/*
+
+%files -n netronome-firmware
+%license LICENCE.Netronome
+%dir %{_firmwarepath}/netronome
+%{_firmwarepath}/netronome/*
 
 %changelog
 * Mon Nov 12 2018 Vaughan <devel at agrez dot net> - 20181011-89.git44d4fca9
