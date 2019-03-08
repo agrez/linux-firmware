@@ -1,12 +1,12 @@
-%global checkout c6b6265d
-%global firmware_release 89
-%global sha512 f1ad584870cac242bac3990e4f57fd0127c32b52e05dd30efc5e9f975fb6a7cafff7aee6d09fb0f403ef979ed51b1e1021483061252b6441e2bd7476201d8cfa
+%global checkout 710963fe
+%global firmware_release 94
+%global sha512 493fb7b190380a5f23e906def749f41501ab240c999f05344008cda765b7dbafef68c76a89bce510745b4e9131c0401d8c5feb08613d90cb077d2c81d76c64dc
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20181008
+Version:	20190213
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
