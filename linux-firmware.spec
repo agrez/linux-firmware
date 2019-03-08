@@ -443,6 +443,11 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %{_firmwarepath}/netronome/*
 
 %changelog
+* Fri Mar 08 2019 Vaughan <devel at agrez dot net> - 20190213-94.git710963fe
+- New upstream snapshot
+- Sync with upstream Fedora package changes
+- Bump release
+
 * Mon Nov 12 2018 Vaughan <devel at agrez dot net> - 20181011-89.git44d4fca9
 - New upstream snapshot
 - Bump release
